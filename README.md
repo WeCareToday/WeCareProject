@@ -46,9 +46,16 @@ You should care because food insecurity is a real issue and food waste is also a
   ___
 
 ## Data Flow
-******* Insert wireframe / domain model
+
+### Wire frame
+![Wireframe](img/wireframe.png)
+
+### Domain Model & Schema
+
+![Domain model](img/domainmodel.png)
 
 ## Non-Functional Requirements 
+
 1. Ads 
 2. Accessibility HTML/CSS
 3. Tests
