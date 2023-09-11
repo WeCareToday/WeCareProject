@@ -36,4 +36,18 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    // Amplify API and Datastore dependencies
+    implementation 'com.amplifyframework:aws-api:2.13.0'
+    implementation 'com.amplifyframework:aws-datastore:2.13.0'
+
+    // Support for Java 8 features
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
+
+    //Amplify Cognito
+    implementation 'com.amplifyframework:aws-auth-cognito:2.13.0'
+
+    //S3 Storage
+    implementation 'com.amplifyframework:aws-storage-s3:2.13.0'
+    implementation 'com.amplifyframework:aws-auth-cognito:2.13.0'
 }
