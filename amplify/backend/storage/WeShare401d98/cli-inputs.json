@@ -1,0 +1,18 @@
+{
+  "resourceName": "WeShare401d98",
+  "policyUUID": "ef741c41",
+  "bucketName": "wecareproject8014e70c6cf4407abe3577927a0f69d9",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}
