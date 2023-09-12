@@ -2,6 +2,11 @@ plugins {
     id 'com.android.application'
 }
 
+//repositories {
+//    google()
+//    mavenCentral()
+//}
+
 android {
     namespace 'com.jennisung.weshare'
     compileSdk 33
@@ -26,6 +31,18 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+//    buildFeatures {
+//        compose true
+//    }
+//
+//    composeOptions {
+//        kotlinCompilerExtensionVersion = "1.1.1"
+//    }
+//
+//    kotlinOptions {
+//        jvmTarget = "1.8"
+//    }
 }
 
 dependencies {
@@ -51,4 +68,7 @@ dependencies {
     implementation 'com.amplifyframework:aws-storage-s3:2.13.0'
     implementation 'com.amplifyframework:aws-auth-cognito:2.13.0'
 
+    // Compose Material 3
+//    implementation "androidx.compose.material3:material3:1.1.1"
+//    implementation "androidx.compose.material3:material3-window-size-class:1.1.1"
 }

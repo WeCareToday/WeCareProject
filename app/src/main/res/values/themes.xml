@@ -6,4 +6,6 @@
     </style>
 
     <style name="Theme.WeShare" parent="Base.Theme.WeShare" />
+
+
 </resources>

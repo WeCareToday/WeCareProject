@@ -8,6 +8,7 @@ import com.jennisung.weshare.R;
 
 public class RequestActivity extends AppCompatActivity {
 
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
