@@ -12,6 +12,7 @@ import com.amplifyframework.auth.cognito.result.AWSCognitoAuthSignOutResult;
 import com.amplifyframework.auth.options.AuthSignOutOptions;
 import com.amplifyframework.auth.options.AuthSignUpOptions;
 import com.amplifyframework.core.Amplify;
+import com.jennisung.weshare.Activities.LoginActivity;
 import com.jennisung.weshare.Activities.SignupActivity;
 import com.jennisung.weshare.Activities.SplashPageActivity;
 
@@ -19,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
     private final String TAG = "MainActivity";
 
     Button splashpageButton;
+    Button logoutButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,9 +30,52 @@ public class MainActivity extends AppCompatActivity {
 
         splashpageButton = findViewById(R.id.MainActivityGoToSplashPageButton);
 
+        logoutButton = findViewById(R.id.MainActivityLogoutButton);
+
 
         setupGoToSplashPageButton();
-        //Cognito Signup logic
+        setupLogoutButton();
+
+    };
+
+    void setupGoToSplashPageButton() {
+        splashpageButton.setOnClickListener(view -> {
+            Intent goToSplashPageActivityIntent = new Intent(MainActivity.this, SplashPageActivity.class);
+            startActivity(goToSplashPageActivityIntent);
+        });
+
+    }
+    void setupLogoutButton() {
+            logoutButton.setOnClickListener(view -> {
+        AuthSignOutOptions signOutOptions = AuthSignOutOptions.builder()
+                .globalSignOut(true)
+                .build();
+
+        Amplify.Auth.signOut(signOutOptions,
+                signOutResult -> {
+                    if(signOutResult instanceof AWSCognitoAuthSignOutResult.CompleteSignOut) {
+                        Log.i(TAG, "Global sign out successful!");
+                        Intent goToSplashPageActivityIntent = new Intent(MainActivity.this, SplashPageActivity.class);
+                        startActivity(goToSplashPageActivityIntent);
+                    } else if (signOutResult instanceof AWSCognitoAuthSignOutResult.PartialSignOut) {
+                        Log.i(TAG, "Partial sign out successful!");
+                    } else if (signOutResult instanceof AWSCognitoAuthSignOutResult.FailedSignOut) {
+                        Log.i(TAG, "Logout failed: " + signOutResult.toString());
+                    }
+                });
+            });
+
+
+        }
+
+
+    }
+
+
+
+
+
+//Cognito Signup logic
 //                Amplify.Auth.signUp("sung.jenni93@gmail.com",
 //                  "password1234",
 //                        AuthSignUpOptions.builder()
@@ -45,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
 //                    );
 
 
-                // Cognito Confirm Signup
+// Cognito Confirm Signup
 //                Amplify.Auth.confirmSignUp("sung.jenni93@gmail.com",
 //                        "236557",
 //                        success -> {
@@ -56,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
 //                        });
 
 
-                //Cognito Signin
+//Cognito Signin
 //                Amplify.Auth.signIn("sung.jenni93@gmail.com",
 //                "password1234",
 //                        success -> Log.i(TAG, "Sign in Succeeded:" + success.toString()),
@@ -64,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-                //Cognito Log out
+//Cognito Log out
 //        AuthSignOutOptions signOutOptions = AuthSignOutOptions.builder()
 //                .globalSignOut(true)
 //                .build();
@@ -79,22 +125,3 @@ public class MainActivity extends AppCompatActivity {
 //                        Log.i(TAG, "Logout failed: " + signOutResult.toString());
 //                    }
 //                });
-
-
-
-
-
-
-
-
-        };
-
-    void setupGoToSplashPageButton() {
-        splashpageButton.setOnClickListener(view -> {
-            Intent goToSplashPageActivityIntent = new Intent(MainActivity.this, SplashPageActivity.class);
-            startActivity(goToSplashPageActivityIntent);
-        });
-    }
-
-
-    }
