@@ -25,5 +25,11 @@
     <string name="verify_user">Verify Account</string>
     <string name="verification_number">Verification Number</string>
     <string name="submit_button_verify">Submit</string>
+    <string name="login_submit_button">Submit</string>
+    <string name="submit_login" />
+    <string name="login_splash">Submit</string>
+    <string name="Login_button">Login</string>
+    <string name="signup_button_splash">Sign Up</string>
+    <string name="splash_page">Splash</string>
 
 </resources>
