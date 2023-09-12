@@ -40,8 +40,10 @@ public class LoginActivity extends AppCompatActivity {
                     passwordEditText.getText().toString(),
                     success -> {
                         Log.i(TAG, "Sign in Succeeded:" + success.toString());
-                        Intent gotoMainActivityIntent = new Intent(LoginActivity.this, MainActivity.class);
-                        startActivity(gotoMainActivityIntent);
+//                        Intent gotoMainActivityIntent = new Intent(LoginActivity.this, MainActivity.class);
+//                        startActivity(gotoMainActivityIntent);
+                        Intent gotoProfileActivityIntent = new Intent(LoginActivity.this, ProfileActivity.class);
+                        startActivity(gotoProfileActivityIntent);
                     },
                     failure -> {
                         Log.i(TAG, "Sign in failed:" + failure.toString());
