@@ -6,4 +6,115 @@
     android:layout_height="match_parent"
     tools:context=".Activities.ProfileActivity">
 
+    <!-- TextView for displaying the username -->
+    <TextView
+        android:id="@+id/usernameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/UserNameProfileActivity"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/profileImageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- ImageView for displaying the profile image -->
+    <ImageView
+        android:id="@+id/profileImageView"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:contentDescription="@string/profileImageActivity"
+        app:layout_constraintBottom_toTopOf="@+id/nameViewText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/usernameTextView"
+        app:srcCompat="@drawable/ic_launcher_background"
+        tools:ignore="ImageContrastCheck" />
+
+    <!-- EditText for displaying the name -->
+    <TextView
+        android:id="@+id/nameViewText"
+        android:layout_width="320dp"
+        android:layout_height="48dp"
+        android:hint="@string/nameProfileActivity"
+        android:minHeight="48dp"
+        android:textColorHint="#8D6E63"
+        app:layout_constraintBottom_toTopOf="@+id/usernameViewTextText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileImageView" />
+
+    <!-- EditText for displaying the username -->
+    <TextView
+        android:id="@+id/usernameViewTextText"
+        android:layout_width="320dp"
+        android:layout_height="48dp"
+        android:hint="@string/usernameProfileActivity"
+        android:minHeight="48dp"
+        android:textColorHint="#8D6E63"
+        app:layout_constraintBottom_toTopOf="@+id/addressViewText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameViewText" />
+
+    <!-- EditText for displaying the address -->
+    <TextView
+        android:id="@+id/addressViewText"
+        android:layout_width="320dp"
+        android:layout_height="48dp"
+        android:hint="@string/addressProfileActivity"
+        android:minHeight="48dp"
+        android:textColorHint="#8D6E63"
+        app:layout_constraintBottom_toTopOf="@+id/zipcodeEditText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/usernameViewTextText" />
+
+    <!-- EditText for displaying the zipcode -->
+    <TextView
+        android:id="@+id/zipcodeEditText"
+        android:layout_width="320dp"
+        android:layout_height="48dp"
+        android:hint="@string/zipcodeActivity"
+        android:minHeight="48dp"
+        android:textColorHint="#8D6E63"
+        app:layout_constraintBottom_toTopOf="@+id/donateButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addressViewText" />
+
+    <!-- Button for donating -->
+    <Button
+        android:id="@+id/donateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/DonateButtonProfileActivity"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/requestButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/zipcodeEditText" />
+
+    <!-- Button for requesting donation -->
+    <Button
+        android:id="@+id/requestButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/RequestDonationButtonProfileActivity"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/donateButton"
+        app:layout_constraintTop_toBottomOf="@+id/zipcodeEditText" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+<!--    <?xml version="1.0" encoding="utf-8"?>-->
+<!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--xmlns:tools="http://schemas.android.com/tools"-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="match_parent"-->
+<!--tools:context=".Activities.ProfileActivity">-->
+
+<!--</androidx.constraintlayout.widget.ConstraintLayout>-->

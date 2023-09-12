@@ -35,4 +35,15 @@
     <string name="login_submit">Submit</string>
     <string name="logout">Logout</string>
 
+
+<!--    Juan's string for profile activity-->
+    <string name="UserNameProfileActivity">Username</string>
+    <string name="profileImageActivity">profile image</string>
+    <string name="nameProfileActivity">name</string>
+    <string name="usernameProfileActivity">username</string>
+    <string name="addressProfileActivity">address</string>
+    <string name="zipcodeActivity">zipcode</string>
+    <string name="RequestDonationButtonProfileActivity">Request Donation</string>
+    <string name="DonateButtonProfileActivity">Donate</string>
+
 </resources>
