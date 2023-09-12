@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">WeShare</string>
+    <string name="requestTitleTextView">Title/Label</string>
+    <string name="descriptionBox">Enter a description of your Donation Request</string>
+    <string name="requestActivityHouseholdSize">Household Size/Number of Individuals</string>
+    <string name="requestFillDate">Request Need-by Date</string>
+    <string name="requestDietaryRestrictions">Dietary Restrictions</string>
+    <string name="requestDietaryRestrictionsExample">Ex: Lactose Intolerant</string>
 </resources>
