@@ -2,6 +2,7 @@ package com.jennisung.weshare.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -32,15 +33,43 @@ public class VerificationActivity extends AppCompatActivity {
 
     }
 
-    void setupSubmitButton() {
-                Amplify.Auth.confirmSignUp(email.getText().toString(),
-                        verificationCode.getText().toString(),
-                        success -> {
-                            Log.i(TAG, "Verification Succeeded:" + success.toString());
-                        },
+//    void setupSubmitButton() {
+//        Amplify.Auth.confirmSignUp(
+//                email.getText().toString(),
+//                verificationCode.getText().toString(),
+//                success -> {
+//                    Log.i(TAG, "Verification Succeeded:" + success.toString());
+//                    Intent gotoLoginPageIntent = new Intent(VerificationActivity.this, LoginActivity.class);
+//                    startActivity(gotoLoginPageIntent);
+//                },
+//                failure -> {
+//                    Log.i(TAG, "Verification failed:" + failure.toString());
+//                }
+//        );
+//    }
 
-                        failure -> {Log.i(TAG, "Verification failed:" + failure.toString());
-                        });
+    void setupSubmitButton() {
+        submitButton.setOnClickListener(v -> {
+            String emailText = email.getText().toString();
+            String verificationCodeText = verificationCode.getText().toString();
+
+            if (emailText.isEmpty() || verificationCodeText.isEmpty()) {
+                return;
+            }
+
+            Amplify.Auth.confirmSignUp(
+                    emailText,
+                    verificationCodeText,
+                    success -> {
+                        Log.i(TAG, "Verification Succeeded:" + success.toString());
+                        Intent gotoLoginPageIntent = new Intent(VerificationActivity.this, LoginActivity.class);
+                        startActivity(gotoLoginPageIntent);
+                    },
+                    failure -> {
+                        Log.i(TAG, "Verification failed:" + failure.toString());
+                    }
+            );
+        });
 
     }
 

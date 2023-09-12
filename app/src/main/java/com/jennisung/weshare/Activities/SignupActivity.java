@@ -2,6 +2,7 @@ package com.jennisung.weshare.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -43,22 +44,29 @@ public class SignupActivity extends AppCompatActivity {
 
     void setupSubmitButton() {
         submitButton.setOnClickListener(v -> {
-            Amplify.Auth.signUp(email.getText().toString(),
-                  password.getText().toString(),
-                        AuthSignUpOptions.builder()
-                                .userAttribute(AuthUserAttributeKey.email(), email.getText().toString())
-                                .userAttribute(AuthUserAttributeKey.nickname(), username.getText().toString())
-                                .userAttribute(AuthUserAttributeKey.address(), address.getText().toString())
-                                .userAttribute(AuthUserAttributeKey.name(), name.getText().toString())
-//                                .userAttribute(AuthUserAttributeKey.custom(), "organization")
-                                .build(),
-                        successResponse -> Log.i(TAG, "Signup Succeeded:" + successResponse.toString()),
-                        failureResponse -> Log.i(TAG, "Signup failed with username:" + "sung.jenni93@gmail.com" + "with this" + failureResponse.toString())
-
-                    );
-
+            Amplify.Auth.signUp(
+                    email.getText().toString(),
+                    password.getText().toString(),
+                    AuthSignUpOptions.builder()
+                            .userAttribute(AuthUserAttributeKey.email(), email.getText().toString())
+                            .userAttribute(AuthUserAttributeKey.nickname(), username.getText().toString())
+                            .userAttribute(AuthUserAttributeKey.address(), address.getText().toString())
+                            .userAttribute(AuthUserAttributeKey.name(), name.getText().toString())
+                            // .userAttribute(AuthUserAttributeKey.custom(), "organization")
+                            .build(),
+                    successResponse -> {
+                        Log.i(TAG, "Signup Succeeded:" + successResponse.toString());
+                        Intent gotoVerificationActivity = new Intent(SignupActivity.this, VerificationActivity.class);
+                        startActivity(gotoVerificationActivity);
+                    },
+                    failureResponse -> {
+                        Log.i(TAG, "Signup failed with username: sung.jenni93@gmail.com with this " + failureResponse.toString());
+                    }
+            );
         });
-
-
     }
+
+
+
 }
+

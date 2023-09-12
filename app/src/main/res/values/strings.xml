@@ -31,5 +31,8 @@
     <string name="Login_button">Login</string>
     <string name="signup_button_splash">Sign Up</string>
     <string name="splash_page">Splash</string>
+    <string name="email_input">Email</string>
+    <string name="login_submit">Submit</string>
+    <string name="logout">Logout</string>
 
 </resources>
