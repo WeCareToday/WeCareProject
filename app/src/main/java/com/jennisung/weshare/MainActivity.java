@@ -2,25 +2,34 @@ package com.jennisung.weshare;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 
 import com.amplifyframework.auth.AuthUserAttributeKey;
 import com.amplifyframework.auth.cognito.result.AWSCognitoAuthSignOutResult;
 import com.amplifyframework.auth.options.AuthSignOutOptions;
 import com.amplifyframework.auth.options.AuthSignUpOptions;
 import com.amplifyframework.core.Amplify;
+import com.jennisung.weshare.Activities.SignupActivity;
+import com.jennisung.weshare.Activities.SplashPageActivity;
 
 public class MainActivity extends AppCompatActivity {
     private final String TAG = "MainActivity";
+
+    Button splashpageButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        splashpageButton = findViewById(R.id.MainActivityGoToSplashPageButton);
 
-                //Cognito Signup logic
+
+        setupGoToSplashPageButton();
+        //Cognito Signup logic
 //                Amplify.Auth.signUp("sung.jenni93@gmail.com",
 //                  "password1234",
 //                        AuthSignUpOptions.builder()
@@ -79,6 +88,13 @@ public class MainActivity extends AppCompatActivity {
 
 
         };
+
+    void setupGoToSplashPageButton() {
+        splashpageButton.setOnClickListener(view -> {
+            Intent goToSplashPageActivityIntent = new Intent(MainActivity.this, SplashPageActivity.class);
+            startActivity(goToSplashPageActivityIntent);
+        });
+    }
 
 
     }

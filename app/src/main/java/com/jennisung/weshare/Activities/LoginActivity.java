@@ -1,41 +1,45 @@
 package com.jennisung.weshare.Activities;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.amplifyframework.core.Amplify;
 import com.jennisung.weshare.R;
 
 public class LoginActivity extends AppCompatActivity {
+    public static String TAG = "LoginActivity";
 
-    private EditText usernameEditText;
-    private EditText passwordEditText;
+    Button submitButton;
+
+    //note: possibly switch to email
+    EditText usernameEditText;
+    EditText passwordEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        usernameEditText = findViewById(R.id.usernameEditText);
-        passwordEditText = findViewById(R.id.passwordEditText);
-        Button loginButton = findViewById(R.id.loginButton);
+        usernameEditText = findViewById(R.id.LoginActivityUsernameEditText);
+        passwordEditText = findViewById(R.id.LoginActivityPasswordEditText);
+        submitButton = findViewById(R.id.LoginActivitySubmitButton);
 
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String username = usernameEditText.getText().toString();
-                String password = passwordEditText.getText().toString();
+        setupSubmitButton();
+    }
 
-                if(username.isEmpty() || password.isEmpty()) {
-                    Toast.makeText(LoginActivity.this, "Please enter both username and password", Toast.LENGTH_SHORT).show();
-                    return;
-                }
+    void  setupSubmitButton() {
+        submitButton.setOnClickListener(view -> {
+            Amplify.Auth.signIn(usernameEditText.getText().toString(),
+                    passwordEditText.getText().toString(),
+                    success -> Log.i(TAG, "Sign in Succeeded:" + success.toString()),
+                    failure -> Log.i(TAG, "Sign in failed:" + failure.toString()));
+                });
 
-                // AWS backend
 
-            }
-        });
     }
 }
