@@ -16,36 +16,37 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView2"
+    <EditText
+        android:id="@+id/donationRequestDescription"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/descriptionBox"
+        android:layout_height="48dp"
+        android:hint="@string/descriptionBox"
+        android:textColor="@android:color/darker_gray"
         app:layout_constraintStart_toStartOf="@+id/requestActivityRequestTitle"
         app:layout_constraintTop_toBottomOf="@+id/requestActivityRequestTitle" />
 
     <Switch
-        android:id="@+id/switch1"
+        android:id="@+id/organizationSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Switch"
-        app:layout_constraintStart_toStartOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        android:text="@string/requestActivityYesNoSwitch"
+        app:layout_constraintStart_toStartOf="@+id/requestActivityForOrganizationTextView"
+        app:layout_constraintTop_toBottomOf="@+id/requestActivityForOrganizationTextView" />
 
     <Switch
-        android:id="@+id/switch2"
+        android:id="@+id/requestActivityMeetingSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Switch"
-        app:layout_constraintStart_toStartOf="@+id/switch1"
-        app:layout_constraintTop_toBottomOf="@+id/switch1" />
+        android:text="@string/requestActivityYesNoSwitch"
+        app:layout_constraintStart_toStartOf="@+id/requestActivityCapableOfMeeting"
+        app:layout_constraintTop_toBottomOf="@+id/requestActivityCapableOfMeeting" />
 
     <SeekBar
         android:id="@+id/seekBar"
-        android:layout_width="163dp"
+        android:layout_width="0dp"
         android:layout_height="18dp"
+        android:layout_marginEnd="48dp"
+        app:layout_constraintEnd_toEndOf="@+id/textView3"
         app:layout_constraintStart_toStartOf="@+id/textView3"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
@@ -55,8 +56,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/requestActivityHouseholdSize"
-        app:layout_constraintStart_toStartOf="@+id/switch2"
-        app:layout_constraintTop_toBottomOf="@+id/switch2" />
+        app:layout_constraintStart_toStartOf="@+id/requestActivityMeetingSwitch"
+        app:layout_constraintTop_toBottomOf="@+id/requestActivityMeetingSwitch" />
 
     <TextView
         android:id="@+id/textView4"
@@ -70,7 +71,7 @@
     <EditText
         android:id="@+id/editTextDate"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:ems="10"
         android:inputType="date"
         app:layout_constraintStart_toEndOf="@+id/imageView"
@@ -78,8 +79,8 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="38dp"
-        android:layout_height="45dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         app:layout_constraintStart_toStartOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
         app:srcCompat="@android:drawable/ic_menu_my_calendar" />
@@ -93,22 +94,22 @@
         app:layout_constraintStart_toStartOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-    <TextView
+    <EditText
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:text="@string/requestDietaryRestrictionsExample"
+        android:textColor="@android:color/darker_gray"
         app:layout_constraintStart_toStartOf="@+id/textView5"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <Switch
-        android:id="@+id/switch3"
+        android:id="@+id/requestActivityAnonymousSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Switch"
-        app:layout_constraintStart_toStartOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        android:text="@string/onOffSwitchRequestActivity"
+        app:layout_constraintStart_toStartOf="@+id/requestActivityAnonymous"
+        app:layout_constraintTop_toBottomOf="@+id/requestActivityAnonymous" />
 
     <Button
         android:id="@+id/button"
@@ -116,6 +117,33 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="Button"
-        app:layout_constraintStart_toStartOf="@+id/switch3"
-        app:layout_constraintTop_toBottomOf="@+id/switch3" />
+        app:layout_constraintStart_toStartOf="@+id/requestActivityAnonymousSwitch"
+        app:layout_constraintTop_toBottomOf="@+id/requestActivityAnonymousSwitch" />
+
+    <TextView
+        android:id="@+id/requestActivityForOrganizationTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/requestActivityForOrganization"
+        app:layout_constraintStart_toStartOf="@+id/donationRequestDescription"
+        app:layout_constraintTop_toBottomOf="@+id/donationRequestDescription" />
+
+    <TextView
+        android:id="@+id/requestActivityCapableOfMeeting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/requestActivityCapableOfMeeting"
+        app:layout_constraintStart_toStartOf="@+id/organizationSwitch"
+        app:layout_constraintTop_toBottomOf="@+id/organizationSwitch" />
+
+    <TextView
+        android:id="@+id/requestActivityAnonymous"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/requestActivityAnonymous"
+        app:layout_constraintStart_toStartOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
 </androidx.constraintlayout.widget.ConstraintLayout>
