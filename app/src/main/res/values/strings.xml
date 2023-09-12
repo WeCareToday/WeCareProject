@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">WeShare</string>
+
     <string name="requestTitleTextView">Title/Label</string>
     <string name="descriptionBox">Enter a description of your Donation Request</string>
     <string name="requestActivityHouseholdSize">Household Size/Number of Individuals</string>
@@ -12,4 +13,17 @@
     <string name="requestActivityYesNoSwitch">Yes</string>
     <string name="requestActivityCapableOfMeeting">Capable of Meeting?</string>
     <string name="requestActivityAnonymous">Anonymous Request?</string>
+
+    <string name="sign_up">Sign Up</string>
+    <string name="email">Email</string>
+    <string name="name_input">Name</string>
+    <string name="address_input">Address</string>
+    <string name="username_input">Username</string>
+    <string name="password_input">Password</string>
+    <string name="signup_button">Submit</string>
+    <string name="verify_signup">Verify User</string>
+    <string name="verify_user">Verify Account</string>
+    <string name="verification_number">Verification Number</string>
+    <string name="submit_button_verify">Submit</string>
+
 </resources>
