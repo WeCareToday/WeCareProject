@@ -45,5 +45,7 @@
     <string name="zipcodeActivity">zipcode</string>
     <string name="RequestDonationButtonProfileActivity">Request Donation</string>
     <string name="DonateButtonProfileActivity">Donate</string>
+    <string name="requestActivityDateFieldEditText">Month/Day/Year</string>
+    <string name="requestActivitySubmit">Submit</string>
 
 </resources>
