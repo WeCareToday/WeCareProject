@@ -78,31 +78,31 @@
         android:hint="@string/zipcodeActivity"
         android:minHeight="48dp"
         android:textColorHint="#8D6E63"
-        app:layout_constraintBottom_toTopOf="@+id/donateButton"
+        app:layout_constraintBottom_toTopOf="@+id/FragmentDonateButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addressViewText" />
 
     <!-- Button for donating -->
     <Button
-        android:id="@+id/donateButton"
+        android:id="@+id/FragmentDonateButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/DonateButtonProfileActivity"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/requestButton"
+        app:layout_constraintEnd_toStartOf="@+id/FragmentRequestButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/zipcodeEditText" />
 
     <!-- Button for requesting donation -->
     <Button
-        android:id="@+id/requestButton"
+        android:id="@+id/FragmentRequestButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/RequestDonationButtonProfileActivity"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/donateButton"
+        app:layout_constraintStart_toEndOf="@+id/FragmentDonateButton"
         app:layout_constraintTop_toBottomOf="@+id/zipcodeEditText" />
 
     <ImageButton
