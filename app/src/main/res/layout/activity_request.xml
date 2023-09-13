@@ -160,21 +160,21 @@
         app:layout_constraintTop_toBottomOf="@+id/requestActivityDietaryTextView" />
 
     <EditText
-        android:id="@+id/requestActivityEmailFieldEditText"
+        android:id="@+id/requestActivityDietaryFieldEditText2"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="40dp"
-        android:text="@string/requestActivityEmailFieldEditText"
+        android:text="@string/requestDietaryRestrictionsExample"
         android:textColor="@android:color/darker_gray"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/requestActivityEmailTextView" />
 
     <EditText
-        android:id="@+id/requestActivityPhoneFieldEditText"
+        android:id="@+id/requestActivityDietaryFieldEditText3"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="40dp"
-        android:text="@string/requestActivityPhoneFieldEditText"
+        android:text="@string/requestDietaryRestrictionsExample"
         android:textColor="@android:color/darker_gray"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/requestActivityPhoneTextView" />
@@ -201,7 +201,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/requestActivityPhoneFieldEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/requestActivityDietaryFieldEditText3" />
 
     <TextView
         android:id="@+id/requestActivityForOrganizationTextView"
@@ -249,7 +249,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/requestActivityPhoneTextView"
-        app:layout_constraintTop_toBottomOf="@+id/requestActivityEmailFieldEditText"
+        app:layout_constraintTop_toBottomOf="@+id/requestActivityDietaryFieldEditText2"
         tools:layout_editor_absoluteX="24dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
