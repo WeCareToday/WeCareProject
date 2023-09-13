@@ -15,13 +15,13 @@ import com.amplifyframework.core.Amplify;
 import com.jennisung.weshare.Activities.LoginActivity;
 import com.jennisung.weshare.Activities.SignupActivity;
 import com.jennisung.weshare.Activities.SplashPageActivity;
+import com.jennisung.weshare.Fragments.PopupFormFragment;
 
 public class MainActivity extends AppCompatActivity {
     private final String TAG = "MainActivity";
 
     Button splashpageButton;
     Button logoutButton;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,11 +32,21 @@ public class MainActivity extends AppCompatActivity {
 
         logoutButton = findViewById(R.id.MainActivityLogoutButton);
 
-
         setupGoToSplashPageButton();
         setupLogoutButton();
+        setupShowPopupButton();
 
     };
+
+
+    void setupShowPopupButton() {
+        Button showPopupButton = findViewById(R.id.showPopupButton);
+
+        showPopupButton.setOnClickListener(view -> {
+            PopupFormFragment popupFormFragment = new PopupFormFragment();
+            popupFormFragment.show(getSupportFragmentManager(), "popup_form_fragment");
+        });
+    }
 
     void setupGoToSplashPageButton() {
         splashpageButton.setOnClickListener(view -> {
@@ -45,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
     void setupLogoutButton() {
             logoutButton.setOnClickListener(view -> {
         AuthSignOutOptions signOutOptions = AuthSignOutOptions.builder()
