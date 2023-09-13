@@ -19,6 +19,7 @@ import android.preference.PreferenceManager;
 import android.provider.OpenableColumns;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -48,6 +49,8 @@ public class ProfileActivity extends AppCompatActivity {
     Button donateButton;
     Button requestButton;
 
+    ImageButton updateProfileButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,11 +69,13 @@ public class ProfileActivity extends AppCompatActivity {
         zipcodeViewText = findViewById(R.id.zipcodeEditText);
         donateButton = findViewById(R.id.donateButton);
         requestButton = findViewById(R.id.requestButton);
+        updateProfileButton = findViewById(R.id.updateProfileImageButton);
 
         fetchLoggedInUser();
         setupDonateButton();
         setupRequestDonationButton();
         setupProfileImageView();
+        setupUpdateImageButton();
 
 
 
@@ -86,7 +91,7 @@ public class ProfileActivity extends AppCompatActivity {
                         if(key.equals("username")){
                             userNameTextView.setText(value);
                         }
-                        if(key.equals("address")){
+                        if(key.equals("email")){
                             addressViewText.setText(value);
                         }
                         if(key.equals("name")){
@@ -133,6 +138,13 @@ public class ProfileActivity extends AppCompatActivity {
         requestButton.setOnClickListener(v -> {
             Intent goToRequestPageIntent = new Intent(ProfileActivity.this, RequestActivity.class);
             startActivity(goToRequestPageIntent);
+        });
+    }
+
+    void setupUpdateImageButton(){
+        updateProfileButton.setOnClickListener(v ->{
+            Intent goToUpdateProfileActivity = new Intent(ProfileActivity.this, UpdateProfileActivity.class);
+            startActivity(goToUpdateProfileActivity);
         });
     }
 
