@@ -11,49 +11,43 @@
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="60dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="60dp"
+        android:layout_marginTop="37dp"
         android:text="@string/splash_page"
         android:textSize="20sp"
         app:cornerRadius="7dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/MainActivityHeading"
         tools:ignore="VisualLintButtonSize" />
+
+
+    <!--    popup form-->
+    <!--    <Button-->
+    <!--        android:id="@+id/showPopupButton"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="50dp"-->
+    <!--        android:layout_marginStart="60dp"-->
+    <!--        android:layout_marginTop="40dp"-->
+    <!--        android:layout_marginEnd="60dp"-->
+    <!--        android:text="@string/show_form"-->
+    <!--        android:textSize="20sp"-->
+    <!--        app:cornerRadius="7dp"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHorizontal_bias="0.5"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/MainActivityLogoutButton"-->
+    <!--        tools:ignore="VisualLintButtonSize" />-->
 
     <Button
         android:id="@+id/MainActivityLogoutButton"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="37dp"
         android:layout_marginEnd="60dp"
         android:text="@string/logout"
         android:textSize="20sp"
         app:cornerRadius="7dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MainActivityGoToSplashPageButton"
-        tools:ignore="VisualLintButtonSize" />
-
-
-    <!--    popup form-->
-    <Button
-        android:id="@+id/showPopupButton"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="60dp"
-        android:text="@string/show_form"
-        android:textSize="20sp"
-        app:cornerRadius="7dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MainActivityLogoutButton"
+        app:layout_constraintTop_toBottomOf="@+id/MainActivityHeading"
         tools:ignore="VisualLintButtonSize" />
 
     <TextView
@@ -67,4 +61,20 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
+
+<!--   TODO: Step 1-1: Add a recycler view editor-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/MainActivityRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MainActivityGoToSplashPageButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>

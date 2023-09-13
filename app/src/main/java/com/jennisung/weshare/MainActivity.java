@@ -1,21 +1,18 @@
 package com.jennisung.weshare;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
-
-import com.amplifyframework.auth.AuthUserAttributeKey;
 import com.amplifyframework.auth.cognito.result.AWSCognitoAuthSignOutResult;
 import com.amplifyframework.auth.options.AuthSignOutOptions;
-import com.amplifyframework.auth.options.AuthSignUpOptions;
 import com.amplifyframework.core.Amplify;
-import com.jennisung.weshare.Activities.LoginActivity;
-import com.jennisung.weshare.Activities.SignupActivity;
 import com.jennisung.weshare.Activities.SplashPageActivity;
-import com.jennisung.weshare.Fragments.PopupFormFragment;
+import com.jennisung.weshare.Adapters.DonateRequestRecyclerViewAdapter;
 
 public class MainActivity extends AppCompatActivity {
     private final String TAG = "MainActivity";
@@ -33,23 +30,20 @@ public class MainActivity extends AppCompatActivity {
 
         setupGoToSplashPageButton();
         setupLogoutButton();
-        setupShowPopupButton();
+//        setupShowPopupButton();
+        setupRecyclerView();
 
-
-
-
-
-    };
-
-
-    void setupShowPopupButton() {
-        Button showPopupButton = findViewById(R.id.showPopupButton);
-
-        showPopupButton.setOnClickListener(view -> {
-            PopupFormFragment popupFormFragment = new PopupFormFragment();
-            popupFormFragment.show(getSupportFragmentManager(), "popup_form_fragment");
-        });
     }
+
+
+//    void setupShowPopupButton() {
+//        Button showPopupButton = findViewById(R.id.showPopupButton);
+//
+//        showPopupButton.setOnClickListener(view -> {
+//            PopupFormFragment popupFormFragment = new PopupFormFragment();
+//            popupFormFragment.show(getSupportFragmentManager(), "popup_form_fragment");
+//        });
+//    }
 
     void setupGoToSplashPageButton() {
         splashpageButton.setOnClickListener(view -> {
@@ -82,60 +76,20 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+    void setupRecyclerView() {
+//       TODO: step 1-2: Grab Recyclerview
+        RecyclerView requestDonateRecyclerView = (RecyclerView) findViewById(R.id.MainActivityRecyclerView);
+
+//        TODO:step 1-3: Set the layout manager for the recyclerview to a linear layout manager
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        requestDonateRecyclerView.setLayoutManager(layoutManager);
+
+//        TODO: step 1-5: create and attach recycler view adapater to recycler view
+        DonateRequestRecyclerViewAdapter adapter = new DonateRequestRecyclerViewAdapter();
+        requestDonateRecyclerView.setAdapter(adapter);
+    }
 
     }
 
 
 
-
-
-//Cognito Signup logic
-//                Amplify.Auth.signUp("sung.jenni93@gmail.com",
-//                  "password1234",
-//                        AuthSignUpOptions.builder()
-//                                .userAttribute(AuthUserAttributeKey.email(), "sung.jenni93@gmail.com")
-//                                .userAttribute(AuthUserAttributeKey.nickname(), "jen")
-//                                .userAttribute(AuthUserAttributeKey.address(), "1123")
-//                                .userAttribute(AuthUserAttributeKey.name(), "jennifer sung")
-//                                .userAttribute(AuthUserAttributeKey.custom(), "organization")
-//                                .build(),
-//                        successResponse -> Log.i(TAG, "Signup Succeeded:" + successResponse.toString()),
-//                        failureResponse -> Log.i(TAG, "Signup failed with username:" + "sung.jenni93@gmail.com" + "with this" + failureResponse.toString())
-//
-//                    );
-
-
-// Cognito Confirm Signup
-//                Amplify.Auth.confirmSignUp("sung.jenni93@gmail.com",
-//                        "236557",
-//                        success -> {
-//                            Log.i(TAG, "Verification Succeeded:" + success.toString());
-//                        },
-//
-//                        failure -> {Log.i(TAG, "Verification failed:" + failure.toString());
-//                        });
-
-
-//Cognito Signin
-//                Amplify.Auth.signIn("sung.jenni93@gmail.com",
-//                "password1234",
-//                        success -> Log.i(TAG, "Sign in Succeeded:" + success.toString()),
-//                        failure -> Log.i(TAG, "Sign in failed:" + failure.toString()));
-
-
-
-//Cognito Log out
-//        AuthSignOutOptions signOutOptions = AuthSignOutOptions.builder()
-//                .globalSignOut(true)
-//                .build();
-//
-//        Amplify.Auth.signOut(signOutOptions,
-//                signOutResult -> {
-//                    if(signOutResult instanceof AWSCognitoAuthSignOutResult.CompleteSignOut) {
-//                        Log.i(TAG, "Global sign out successful!");
-//                    } else if (signOutResult instanceof AWSCognitoAuthSignOutResult.PartialSignOut) {
-//                        Log.i(TAG, "Partial sign out successful!");
-//                    } else if (signOutResult instanceof AWSCognitoAuthSignOutResult.FailedSignOut) {
-//                        Log.i(TAG, "Logout failed: " + signOutResult.toString());
-//                    }
-//                });
