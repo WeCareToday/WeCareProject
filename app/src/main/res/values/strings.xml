@@ -67,6 +67,10 @@
     <string name="updateProfileButton">Update Profile</string>
     <string name="NewUsernameInputText">enter new username</string>
     <string name="newZipCodeEditText">enter zipcode</string>
+    <string name="requestActivityEmailTextView">Email:</string>
+    <string name="requestActivityPhoneTextView">Phone</string>
+    <string name="requestActivityOptionalTextView">(optional):</string>
+
 
 
 </resources>
