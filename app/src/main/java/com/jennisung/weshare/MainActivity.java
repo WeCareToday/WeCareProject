@@ -29,12 +29,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         splashpageButton = findViewById(R.id.MainActivityGoToSplashPageButton);
-
         logoutButton = findViewById(R.id.MainActivityLogoutButton);
 
 
         setupGoToSplashPageButton();
         setupLogoutButton();
+
+
+
+
 
     };
 
