@@ -13,7 +13,6 @@
     <string name="requestActivityYesNoSwitch">Yes</string>
     <string name="requestActivityCapableOfMeeting">Capable of Meeting?</string>
     <string name="requestActivityAnonymous">Anonymous Request?</string>
-
     <string name="sign_up">Sign Up</string>
     <string name="email">Email</string>
     <string name="name_input">Name</string>
@@ -34,9 +33,7 @@
     <string name="email_input">Email</string>
     <string name="login_submit">Submit</string>
     <string name="logout">Logout</string>
-
-
-<!--    Juan's string for profile activity-->
+    <!--    Juan's string for profile activity-->
     <string name="UserNameProfileActivity">Username</string>
     <string name="profileImageActivity">profile image</string>
     <string name="nameProfileActivity">name</string>
@@ -46,6 +43,9 @@
     <string name="RequestDonationButtonProfileActivity">Request Donation</string>
     <string name="DonateButtonProfileActivity">Donate</string>
     <string name="requestActivityDateFieldEditText">Month/Day/Year</string>
-    <string name="requestActivitySubmit">Submit</string>
+    <string name="requestActivitySubmit">Submit</string>    
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="wecare_title">WeCare</string>
+    <string name="show_form">Show Form</string>
 
 </resources>

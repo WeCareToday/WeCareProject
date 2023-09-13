@@ -1,5 +1,7 @@
 package com.jennisung.weshare.Activities;
 
+import static com.amplifyframework.core.Amplify.Auth;
+
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
@@ -21,9 +23,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.amplifyframework.auth.AuthUserAttribute;
+import com.amplifyframework.auth.AuthUserAttributeKey;
 import com.amplifyframework.core.Amplify;
 import com.jennisung.weshare.R;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
@@ -73,7 +77,7 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     void fetchLoggedInUser(){
-        Amplify.Auth.fetchUserAttributes(
+        Auth.fetchUserAttributes(
                 success ->{
 
                     for(AuthUserAttribute userAttribute: success){
@@ -87,6 +91,30 @@ public class ProfileActivity extends AppCompatActivity {
                         }
                         if(key.equals("name")){
                             nameTextView.setText(value);
+                        }
+                        if(key.equals("custom:s3ProfileImageKey")){
+                            s3ImageKey = value.toString();
+                            if (s3ImageKey != null){
+                                int cut = s3ImageKey.lastIndexOf('/');
+                                if (cut != -1){
+                                    s3ImageKey = s3ImageKey.substring(cut+1);
+                                    Log.i("S3ImageString", s3ImageKey);
+                                }
+                            }
+                            Amplify.Storage.downloadFile(
+                                    s3ImageKey,
+                                    new File(getApplication().getFilesDir(), s3ImageKey),
+                                    successful -> {
+
+                                        profileImageView.setImageBitmap(BitmapFactory.decodeFile(successful.getFile().getPath()));
+                                        Log.i(TAG, "able to set image from s3");
+                                    },
+                                    failure -> {
+                                        Log.i(TAG, " Unable to get s3 Image for s3 key:"+ s3ImageKey+ " reason: "+ failure.getStackTrace());
+
+                                    }
+                            );
+
                         }
                     }
                 },
@@ -158,6 +186,7 @@ public class ProfileActivity extends AppCompatActivity {
                     Log.i(TAG, "Succeeded in getting file uploaded to S3! Key is: " + success.getKey());
                     s3ImageKey = success.getKey(); // non-empty s3ImageKey indicates an image was picked in this activity
                     // TODO: update our saveProduct to include the s3 key
+                    updateLocalUserProfileImage(s3ImageKey);
 
                     InputStream pickedImageInputStreamCopy = null; // need to make a copy because InputStreams cannot be reused!
                     try {
@@ -198,6 +227,17 @@ public class ProfileActivity extends AppCompatActivity {
         }
         return result;
     }
+
+    void updateLocalUserProfileImage(String s3ImageGeneratedKey){
+
+        AuthUserAttribute userProfileImage =
+                new AuthUserAttribute(AuthUserAttributeKey.custom("custom:s3ProfileImageKey"), s3ImageGeneratedKey);
+        Amplify.Auth.updateUserAttribute(userProfileImage,
+                result -> Log.i("AuthDemo", "Updated user attribute = " + result.toString()),
+                error -> Log.e("AuthDemo", "Failed to update user attribute.", error)
+        );
+    }
+
 
 
 }

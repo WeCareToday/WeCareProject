@@ -52,7 +52,7 @@ public class SignupActivity extends AppCompatActivity {
                             .userAttribute(AuthUserAttributeKey.nickname(), username.getText().toString())
                             .userAttribute(AuthUserAttributeKey.address(), address.getText().toString())
                             .userAttribute(AuthUserAttributeKey.name(), name.getText().toString())
-                            // .userAttribute(AuthUserAttributeKey.custom(), "organization")
+                            //.userAttribute(AuthUserAttributeKey.custom("s3ProfileImageKey"), "")
                             .build(),
                     successResponse -> {
                         Log.i(TAG, "Signup Succeeded:" + successResponse.toString());
@@ -60,7 +60,7 @@ public class SignupActivity extends AppCompatActivity {
                         startActivity(gotoVerificationActivity);
                     },
                     failureResponse -> {
-                        Log.i(TAG, "Signup failed with username: sung.jenni93@gmail.com with this " + failureResponse.toString());
+                        Log.i(TAG, "Signup failed with username: " + email.getText().toString() +  failureResponse.toString());
                     }
             );
         });
