@@ -64,8 +64,8 @@ public class ProfileActivity extends AppCompatActivity {
         userNameTextViewView = findViewById(R.id.usernameViewTextText);
         addressViewText = findViewById(R.id.addressViewText);
         zipcodeViewText = findViewById(R.id.zipcodeEditText);
-        donateButton = findViewById(R.id.donateButton);
-        requestButton = findViewById(R.id.requestButton);
+        donateButton = findViewById(R.id.FragmentDonateButton);
+        requestButton = findViewById(R.id.FragmentRequestButton);
 
         fetchLoggedInUser();
         setupDonateButton();
