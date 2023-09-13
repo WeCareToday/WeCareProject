@@ -29,3 +29,91 @@ query ListTodos(
     __typename
   }
 }
+
+query GetAssistanceRequest($id: ID!) {
+  getAssistanceRequest(id: $id) {
+    id
+    title
+    description
+    isForOrganization
+    isWillingToMeet
+    familySize
+    dietRestrictions
+    needDate
+    isRequestAnonymous
+    isNeedSatisfied
+    userID
+    contactEmail
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+
+query ListAssistanceRequests(
+  $filter: ModelAssistanceRequestFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listAssistanceRequests(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      title
+      description
+      isForOrganization
+      isWillingToMeet
+      familySize
+      dietRestrictions
+      needDate
+      isRequestAnonymous
+      isNeedSatisfied
+      userID
+      contactEmail
+      createdAt
+      updatedAt
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+
+query GetFoodListing($id: ID!) {
+  getFoodListing(id: $id) {
+    id
+    availableFoodItems
+    isWillingToDeliver
+    isAvailableForPickup
+    contactEmail
+    UserId
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+
+query ListFoodListings(
+  $filter: ModelFoodListingFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listFoodListings(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      availableFoodItems
+      isWillingToDeliver
+      isAvailableForPickup
+      contactEmail
+      UserId
+      createdAt
+      updatedAt
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
