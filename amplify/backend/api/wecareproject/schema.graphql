@@ -7,3 +7,27 @@ type Todo @model {
   name: String!
   description: String
 }
+
+type AssistanceRequest @model @auth(rules:[{allow: public}]){
+  id: ID!
+  title: String!
+  description: String!
+  isForOrganization: Boolean
+  isWillingToMeet: Boolean
+  familySize: Int
+  dietRestrictions: String
+  needDate: AWSDateTime!
+  isRequestAnonymous: Boolean
+  isNeedSatisfied: Boolean
+  userID: ID!
+  contactEmail: String
+}
+
+type FoodListing @model @auth(rules:[{allow: public}]){
+  id: ID!
+  availableFoodItems: String!
+  isWillingToDeliver: Boolean
+  isAvailableForPickup: Boolean
+  contactEmail: String
+  UserId: ID!
+}

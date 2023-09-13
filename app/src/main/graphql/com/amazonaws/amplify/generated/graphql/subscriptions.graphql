@@ -32,3 +32,117 @@ subscription OnDeleteTodo($filter: ModelSubscriptionTodoFilterInput) {
     __typename
   }
 }
+
+subscription OnCreateAssistanceRequest(
+  $filter: ModelSubscriptionAssistanceRequestFilterInput
+) {
+  onCreateAssistanceRequest(filter: $filter) {
+    id
+    title
+    description
+    isForOrganization
+    isWillingToMeet
+    familySize
+    dietRestrictions
+    needDate
+    isRequestAnonymous
+    isNeedSatisfied
+    userID
+    contactEmail
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+
+subscription OnUpdateAssistanceRequest(
+  $filter: ModelSubscriptionAssistanceRequestFilterInput
+) {
+  onUpdateAssistanceRequest(filter: $filter) {
+    id
+    title
+    description
+    isForOrganization
+    isWillingToMeet
+    familySize
+    dietRestrictions
+    needDate
+    isRequestAnonymous
+    isNeedSatisfied
+    userID
+    contactEmail
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+
+subscription OnDeleteAssistanceRequest(
+  $filter: ModelSubscriptionAssistanceRequestFilterInput
+) {
+  onDeleteAssistanceRequest(filter: $filter) {
+    id
+    title
+    description
+    isForOrganization
+    isWillingToMeet
+    familySize
+    dietRestrictions
+    needDate
+    isRequestAnonymous
+    isNeedSatisfied
+    userID
+    contactEmail
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+
+subscription OnCreateFoodListing(
+  $filter: ModelSubscriptionFoodListingFilterInput
+) {
+  onCreateFoodListing(filter: $filter) {
+    id
+    availableFoodItems
+    isWillingToDeliver
+    isAvailableForPickup
+    contactEmail
+    UserId
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+
+subscription OnUpdateFoodListing(
+  $filter: ModelSubscriptionFoodListingFilterInput
+) {
+  onUpdateFoodListing(filter: $filter) {
+    id
+    availableFoodItems
+    isWillingToDeliver
+    isAvailableForPickup
+    contactEmail
+    UserId
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+
+subscription OnDeleteFoodListing(
+  $filter: ModelSubscriptionFoodListingFilterInput
+) {
+  onDeleteFoodListing(filter: $filter) {
+    id
+    availableFoodItems
+    isWillingToDeliver
+    isAvailableForPickup
+    contactEmail
+    UserId
+    createdAt
+    updatedAt
+    __typename
+  }
+}

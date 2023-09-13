@@ -41,3 +41,123 @@ mutation DeleteTodo(
     __typename
   }
 }
+
+mutation CreateAssistanceRequest(
+  $input: CreateAssistanceRequestInput!
+  $condition: ModelAssistanceRequestConditionInput
+) {
+  createAssistanceRequest(input: $input, condition: $condition) {
+    id
+    title
+    description
+    isForOrganization
+    isWillingToMeet
+    familySize
+    dietRestrictions
+    needDate
+    isRequestAnonymous
+    isNeedSatisfied
+    userID
+    contactEmail
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+
+mutation UpdateAssistanceRequest(
+  $input: UpdateAssistanceRequestInput!
+  $condition: ModelAssistanceRequestConditionInput
+) {
+  updateAssistanceRequest(input: $input, condition: $condition) {
+    id
+    title
+    description
+    isForOrganization
+    isWillingToMeet
+    familySize
+    dietRestrictions
+    needDate
+    isRequestAnonymous
+    isNeedSatisfied
+    userID
+    contactEmail
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+
+mutation DeleteAssistanceRequest(
+  $input: DeleteAssistanceRequestInput!
+  $condition: ModelAssistanceRequestConditionInput
+) {
+  deleteAssistanceRequest(input: $input, condition: $condition) {
+    id
+    title
+    description
+    isForOrganization
+    isWillingToMeet
+    familySize
+    dietRestrictions
+    needDate
+    isRequestAnonymous
+    isNeedSatisfied
+    userID
+    contactEmail
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+
+mutation CreateFoodListing(
+  $input: CreateFoodListingInput!
+  $condition: ModelFoodListingConditionInput
+) {
+  createFoodListing(input: $input, condition: $condition) {
+    id
+    availableFoodItems
+    isWillingToDeliver
+    isAvailableForPickup
+    contactEmail
+    UserId
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+
+mutation UpdateFoodListing(
+  $input: UpdateFoodListingInput!
+  $condition: ModelFoodListingConditionInput
+) {
+  updateFoodListing(input: $input, condition: $condition) {
+    id
+    availableFoodItems
+    isWillingToDeliver
+    isAvailableForPickup
+    contactEmail
+    UserId
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+
+mutation DeleteFoodListing(
+  $input: DeleteFoodListingInput!
+  $condition: ModelFoodListingConditionInput
+) {
+  deleteFoodListing(input: $input, condition: $condition) {
+    id
+    availableFoodItems
+    isWillingToDeliver
+    isAvailableForPickup
+    contactEmail
+    UserId
+    createdAt
+    updatedAt
+    __typename
+  }
+}
