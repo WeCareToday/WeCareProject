@@ -6,4 +6,37 @@
     android:layout_height="match_parent"
     tools:context=".Activities.DonateFoodActivity">
 
+    <LinearLayout
+        android:id="@+id/container"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        tools:context=".Activities.DonateFoodActivity">
+
+
+        <EditText
+            android:id="@+id/donorName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Donor Name"
+            android:minHeight="48dp" />
+
+
+        <EditText
+            android:id="@+id/foodDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Food Description"
+            android:minHeight="48dp" />
+
+
+        <Button
+            android:id="@+id/submitButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Submit" />
+    </LinearLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
