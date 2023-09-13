@@ -7,11 +7,50 @@
     tools:context=".Activities.RequestActivity">
 
     <TextView
+        android:id="@+id/requestActivityOptionalTextView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/requestActivityOptionalTextView"
+        android:textColor="@android:color/darker_gray"
+        app:layout_constraintBottom_toBottomOf="@+id/requestActivityDietaryTextView"
+        app:layout_constraintStart_toEndOf="@+id/requestActivityDietaryTextView"
+        app:layout_constraintTop_toTopOf="@+id/requestActivityDietaryTextView" />
+
+    <TextView
+        android:id="@+id/requestActivityOptionalTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/requestActivityOptionalTextView"
+        android:textColor="@android:color/darker_gray"
+        app:layout_constraintBottom_toBottomOf="@+id/requestActivityPhoneTextView"
+        app:layout_constraintStart_toEndOf="@+id/requestActivityPhoneTextView" />
+
+    <TextView
+        android:id="@+id/requestActivityOptionalTextView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/requestActivityOptionalTextView"
+        android:textColor="@android:color/darker_gray"
+        app:layout_constraintBottom_toBottomOf="@+id/requestActivityDateTextView"
+        app:layout_constraintStart_toEndOf="@+id/requestActivityDateTextView"
+        app:layout_constraintTop_toTopOf="@+id/requestActivityDateTextView" />
+
+    <TextView
+        android:id="@+id/requestActivityOptionalTextView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/requestActivityOptionalTextView"
+        android:textColor="@android:color/darker_gray"
+        app:layout_constraintBottom_toBottomOf="@+id/requestActivityHouseholdSizeTextView"
+        app:layout_constraintStart_toEndOf="@+id/requestActivityHouseholdSizeTextView"
+        app:layout_constraintTop_toTopOf="@+id/requestActivityHouseholdSizeTextView" />
+
+    <TextView
         android:id="@+id/requestActivityRequestTitleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:text="@string/requestTitleTextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -21,7 +60,6 @@
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="40dp"
         android:hint="@string/descriptionBox"
         android:textColor="@android:color/darker_gray"
@@ -34,7 +72,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="8dp"
         android:text="@string/requestActivityYesNoSwitch"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/requestActivityForOrganizationTextView" />
@@ -44,7 +81,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="8dp"
         android:text="@string/requestActivityYesNoSwitch"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/requestActivityCapableOfMeetingTextView" />
@@ -54,8 +90,7 @@
         android:layout_width="0dp"
         android:layout_height="18dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginEnd="132dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/requestActivityHouseholdSizeTextView" />
@@ -82,7 +117,7 @@
 
     <EditText
         android:id="@+id/requestActivityDateFieldEditText"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginEnd="132dp"
         android:ems="10"
@@ -98,7 +133,6 @@
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/requestActivityDateTextView"
         app:srcCompat="@android:drawable/ic_menu_my_calendar" />
@@ -107,28 +141,49 @@
         android:id="@+id/requestActivityDietaryTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:text="@string/requestDietaryRestrictions"
-        app:layout_constraintStart_toStartOf="@+id/requestActivityCalendarIconImageView"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/requestActivityCalendarIconImageView" />
 
     <EditText
         android:id="@+id/requestActivityDietaryFieldEditText"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginEnd="132dp"
+        android:text="@string/requestDietaryRestrictionsExample"
+        android:textColor="@android:color/darker_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/requestActivityDietaryTextView" />
+
+    <EditText
+        android:id="@+id/requestActivityDietaryFieldEditText2"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="40dp"
         android:text="@string/requestDietaryRestrictionsExample"
         android:textColor="@android:color/darker_gray"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/requestActivityDietaryTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/requestActivityEmailTextView" />
+
+    <EditText
+        android:id="@+id/requestActivityDietaryFieldEditText3"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="40dp"
+        android:text="@string/requestDietaryRestrictionsExample"
+        android:textColor="@android:color/darker_gray"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/requestActivityPhoneTextView" />
 
     <Switch
         android:id="@+id/requestActivityAnonymousSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="8dp"
         android:text="@string/onOffSwitchRequestActivity"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/requestActivityAnonymousTextView" />
@@ -138,14 +193,15 @@
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="40dp"
         android:text="@string/requestActivitySubmit"
         android:textSize="20sp"
         app:cornerRadius="7dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/requestActivityAnonymousSwitch" />
+        app:layout_constraintTop_toBottomOf="@+id/requestActivityDietaryFieldEditText3" />
 
     <TextView
         android:id="@+id/requestActivityForOrganizationTextView"
@@ -176,4 +232,24 @@
         android:text="@string/requestActivityAnonymous"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/requestActivityDietaryFieldEditText" />
+
+    <TextView
+        android:id="@+id/requestActivityEmailTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/requestActivityEmailTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/requestActivityAnonymousSwitch" />
+
+    <TextView
+        android:id="@+id/requestActivityPhoneTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/requestActivityPhoneTextView"
+        app:layout_constraintTop_toBottomOf="@+id/requestActivityDietaryFieldEditText2"
+        tools:layout_editor_absoluteX="24dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
