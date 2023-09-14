@@ -30,7 +30,7 @@
         android:id="@+id/FragmentRequestButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Request"
+        android:text="@string/information"
         app:cornerRadius="7dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline"
