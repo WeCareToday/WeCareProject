@@ -2,7 +2,7 @@
     <string name="app_name">WeShare</string>
 
     <string name="requestTitleTextView">Title/Label</string>
-    <string name="descriptionBox">Enter a description of your Donation Request</string>
+    <string name="descriptionBox">Donation Request Description</string>
     <string name="requestActivityHouseholdSize">Household Size/Number of Individuals</string>
     <string name="requestFillDate">Request Need-by Date</string>
     <string name="requestDietaryRestrictions">Dietary Restrictions</string>
@@ -42,15 +42,11 @@
     <string name="zipcodeActivity">zipcode</string>
     <string name="RequestDonationButtonProfileActivity">Request Donation</string>
     <string name="DonateButtonProfileActivity">Donate</string>
-    <string name="requestActivityDateFieldEditText">Month/Day/Year</string>
+    <string name="requestActivityDateFieldEditText">12/31/1999</string>
     <string name="requestActivitySubmit">Submit</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="wecare_title">WeCare</string>
     <string name="show_form">Show Form</string>
-
-    <string name="requestActivityEmailTextView">Email:</string>
-    <string name="requestActivityPhoneTextView">Phone</string>
-    <string name="requestActivityOptionalTextView">(optional):</string>
     <string name="requestActivityEmailFieldEditText">Enter Email Here</string>
     <string name="requestActivityPhoneFieldEditText">214-867-5309</string>
     <string name="blank_donate_decription">Blank DonateRequest Description</string>
@@ -59,28 +55,10 @@
     <string name="updateProfileButton">Update Profile</string>
     <string name="NewUsernameInputText">enter new username</string>
     <string name="newZipCodeEditText">enter zipcode</string>
-    <string name="emailAddressPocCollection">enter POC email address</string>
-    <string name="shortDescriptionNeedRequestActivity">Enter short description of need</string>
-    <string name="titleBoxRequestActivity">Enter Title for request</string>
-    <string name="zipCodeforDonation">Enter your zipcode</string>
-    <string name="donate_request">Donations Needed</string>
-    <string name="profile">Profile</string>
-    <string name="main_button">Main</string>
-    <string name="information">Information</string>
-    <string name="goback_button">Go Back</string>
-    <string name="information_activity">Request Info</string>
-    <string name="information_heading">Request\'s Info</string>
-
-    <string name="blank_donate_decription">Blank DonateRequest Description</string>
-    <string name="emailAddress">email address</string>
-    <string name="updateProfileTitle">Update Profile</string>
-    <string name="updateProfileButton">Update Profile</string>
-    <string name="NewUsernameInputText">enter new username</string>
-    <string name="newZipCodeEditText">enter zipcode</string>
     <string name="requestActivityEmailTextView">Email:</string>
     <string name="requestActivityPhoneTextView">Phone</string>
     <string name="requestActivityOptionalTextView">(optional):</string>
-
+    <string name="theNumberFour">4</string>
 
 
 </resources>
