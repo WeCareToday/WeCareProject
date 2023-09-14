@@ -7,5 +7,9 @@
 
     <style name="Theme.WeShare" parent="Base.Theme.WeShare" />
 
+    <style name="ButtonStyle">
+        <item name="android:background">@drawable/custom_button_background</item>
+    </style>
+
 
 </resources>
