@@ -14,28 +14,11 @@
         android:layout_marginTop="37dp"
         android:text="@string/splash_page"
         android:textSize="20sp"
-        app:cornerRadius="7dp"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/nice_blue_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/MainActivityHeading"
         tools:ignore="VisualLintButtonSize" />
-
-
-    <!--    popup form-->
-    <!--    <Button-->
-    <!--        android:id="@+id/showPopupButton"-->
-    <!--        android:layout_width="0dp"-->
-    <!--        android:layout_height="50dp"-->
-    <!--        android:layout_marginStart="60dp"-->
-    <!--        android:layout_marginTop="40dp"-->
-    <!--        android:layout_marginEnd="60dp"-->
-    <!--        android:text="@string/show_form"-->
-    <!--        android:textSize="20sp"-->
-    <!--        app:cornerRadius="7dp"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintHorizontal_bias="0.5"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toBottomOf="@+id/MainActivityLogoutButton"-->
-    <!--        tools:ignore="VisualLintButtonSize" />-->
 
     <Button
         android:id="@+id/MainActivityLogoutButton"
@@ -45,26 +28,40 @@
         android:layout_marginEnd="60dp"
         android:text="@string/logout"
         android:textSize="20sp"
-        app:cornerRadius="7dp"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/nice_blue_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/MainActivityHeading"
         tools:ignore="VisualLintButtonSize" />
+
+
+    <!--   TODO: Step 1-1: Add a recycler view editor-->
+
+    <ImageView
+        android:id="@+id/MainActivitylogoImageView"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="48dp"
+        android:contentDescription="TODO"
+        android:src="@drawable/donation"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription,HardcodedText" />
 
     <TextView
         android:id="@+id/MainActivityHeading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="116dp"
+        android:fontFamily="sans-serif-black"
         android:text="@string/wecare_title"
-        android:textSize="34sp"
+        android:textSize="37sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-
-<!--   TODO: Step 1-1: Add a recycler view editor-->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/MainActivityRecyclerView"
         android:layout_width="0dp"

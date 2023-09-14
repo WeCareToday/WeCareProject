@@ -53,5 +53,6 @@
     <string name="updateProfileButton">Update Profile</string>
     <string name="NewUsernameInputText">enter new username</string>
     <string name="newZipCodeEditText">enter zipcode</string>
+    <string name="donate_request">Donations Needed</string>
 
 </resources>
