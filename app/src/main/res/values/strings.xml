@@ -43,10 +43,11 @@
     <string name="RequestDonationButtonProfileActivity">Request Donation</string>
     <string name="DonateButtonProfileActivity">Donate</string>
     <string name="requestActivityDateFieldEditText">Month/Day/Year</string>
-    <string name="requestActivitySubmit">Submit</string>    
+    <string name="requestActivitySubmit">Submit</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="wecare_title">WeCare</string>
     <string name="show_form">Show Form</string>
+
     <string name="requestActivityEmailTextView">Email:</string>
     <string name="requestActivityPhoneTextView">Phone</string>
     <string name="requestActivityOptionalTextView">(optional):</string>
@@ -59,5 +60,8 @@
     <string name="NewUsernameInputText">enter new username</string>
     <string name="newZipCodeEditText">enter zipcode</string>
     <string name="donate_request">Donations Needed</string>
+
+    <string name="blank_donate_decription">Blank DonateRequest Description</string>
+
 
 </resources>
