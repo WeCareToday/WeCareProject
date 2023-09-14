@@ -20,6 +20,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
 
     public static String TAG = "UpdateProfileActivity ";
     private String currentUserID = "";
+    private String currentUserZipcode = "";
 
     TextInputEditText inputUsernameEditText;
     TextInputEditText inputZipCodeEditText;
@@ -73,4 +74,6 @@ public class UpdateProfileActivity extends AppCompatActivity {
                 }
         );
     }
+
+
 }

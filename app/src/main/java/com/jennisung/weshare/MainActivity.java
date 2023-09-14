@@ -1,5 +1,7 @@
 package com.jennisung.weshare;
 
+import static com.amplifyframework.core.Amplify.Auth;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -8,13 +10,25 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.amplifyframework.api.graphql.model.ModelQuery;
+import com.amplifyframework.auth.AuthUserAttribute;
 import com.amplifyframework.auth.cognito.result.AWSCognitoAuthSignOutResult;
 import com.amplifyframework.auth.options.AuthSignOutOptions;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.AssistanceRequest;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
+
 import com.jennisung.weshare.Activities.ProfileActivity;
+
 import com.jennisung.weshare.Activities.SplashPageActivity;
 import com.jennisung.weshare.Adapters.DonateRequestRecyclerViewAdapter;
 
@@ -23,6 +37,13 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private final String TAG = "MainActivity";
+
+    private RequestQueue mRequestQueue;
+    private StringRequest mStringRequest;
+    List<UsableLocation> userUsableZipcodes;
+    private String currentUserID = "";
+    private String userZipCode = "";
+
 
     public static final String REQUEST_NAME_EXTRA_TAG = "REQUEST";
 
@@ -52,10 +73,17 @@ public class MainActivity extends AppCompatActivity {
 
         setupRecyclerView(assistanceRequest);
 
+        // API impl section
+
+        setCurrentUserID();
+        // Call fetchUserZipcode with a callback
+        fetchUserZipcode(() -> {
+            // This code will be executed when fetchUserZipcode completes
+            getData();
+        });
+
+
     }
-
-
-
 
     private void fetchDataFromDatabase() {
         Amplify.API.query(
@@ -84,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
                 .globalSignOut(true)
                 .build();
 
-        Amplify.Auth.signOut(signOutOptions,
+        Auth.signOut(signOutOptions,
                 signOutResult -> {
                     if(signOutResult instanceof AWSCognitoAuthSignOutResult.CompleteSignOut) {
                         Log.i(TAG, "Global sign out successful!");
@@ -118,9 +146,157 @@ public class MainActivity extends AppCompatActivity {
         requestDonateRecyclerView.setAdapter(adapter);
     }
 
+    //------------------------------API Call section --------------------------------------------------------------
+
+    interface OnFetchUserZipcodeCompleted {
+        void onCompleted();
+    }
+
+    private void getData() {
+        // RequestQueue initialized
+        mRequestQueue = Volley.newRequestQueue(this);
 
 
+        String uriForLoggedInUser = modifyUriString(userZipCode);
+        Log.i("MyInputAPI", "uri passed in: " + uriForLoggedInUser);
 
+        // String Request initialized
+        mStringRequest = new StringRequest(Request.Method.GET, uriForLoggedInUser, new Response.Listener<String>() {
+
+            public void onResponse(String response) {
+
+                Gson gson = new Gson();
+                MyAPIObject myAPIObject = gson.fromJson(response.toString(), MyAPIObject.class);
+                userUsableZipcodes = generateListOfLocations(myAPIObject);
+                displayUsableZipCodes(userUsableZipcodes);
+                Log.i("JSON-Response", "Raw JSON response: " + response);
+
+
+            }
+        }, new Response.ErrorListener() {
+
+            public void onErrorResponse(VolleyError error) {
+                Log.i(TAG, "Error :" + error.toString());
+            }
+        });
+
+        mRequestQueue.add(mStringRequest);
+    }
+
+    List<UsableLocation> generateListOfLocations(MyAPIObject myAPIObject){
+        List<UsableLocation> myUsableZipCodeObjects = new ArrayList<>();
+        MyAPIObject.ResultObject[] resultsArray = myAPIObject.getResults();
+        for (MyAPIObject.ResultObject result : resultsArray) {
+            myUsableZipCodeObjects.add(new UsableLocation(result.code, result.city, result.distance));
+        }
+        return  myUsableZipCodeObjects;
+    }
+
+    void displayUsableZipCodes(List<UsableLocation> inputList){
+        for (UsableLocation location : inputList){
+            Log.i("ZIP-CODE", "usable zipcode is: " + location.code);
+        }
+    }
+
+    String modifyUriString(String localZipCode){
+        Log.i("Local-ZipCode", "local zipcode: " + localZipCode);
+        String modifiedUri = String.format("https://app.zipcodebase.com/api/v1/radius?apikey=2a3f9070-52ad-11ee-bda8-a7ae75877259&code=%s&radius=6&country=us&unit=miles",localZipCode);
+        return modifiedUri;
+    }
+
+    //------------------------amplifyUser setup---------------------------------------
+    void setCurrentUserID(){
+        Auth.getCurrentUser(
+                success -> {
+                    currentUserID = success.getUserId().toString();
+                    Log.i(TAG, "Authenticated user is "+ success.getUserId().toString());
+                },
+                failure -> {
+                    Log.i(TAG, "Could not find authenticated");
+                }
+        );
+    }
+    void fetchUserZipcode(OnFetchUserZipcodeCompleted callback){
+        Auth.fetchUserAttributes(
+                attributes -> {
+                    for (AuthUserAttribute attribute: attributes){
+                        String key = attribute.getKey().getKeyString();
+                        String value = attribute.getValue();
+                        if (key.equals("custom:zipCode")){
+                            userZipCode = value.trim();
+                            Log.i("ZIPCODE-LOCAL-VALUE", "inside for loop zip "+ userZipCode);
+                        }
+                    }
+                    Log.i("AuthDemo", "User attributes = " + attributes.toString());
+                    Log.i("LOCAL-ZIP", "The local zipcode is: " + userZipCode);
+
+                    callback.onCompleted();
+                },
+                error -> Log.e("AuthDemo", "Failed to fetch user attributes.", error)
+        );
+    }
+
+}
+
+//Needed helper classes
+class MyAPIObject {
+    QueryObject query;
+    ResultObject[] results;
+
+    static class QueryObject {
+        String code;
+        String unit;
+        String radius;
+        String country;
+    }
+
+    static class ResultObject {
+        String code;
+        String city;
+        String state;
+        String city_en;
+        String state_en;
+        double distance;
+    }
+
+    public void displayResults() {
+        for(ResultObject item : results){
+            Log.i("QueryObject", "Code "+ item.code);
+            Log.i("QueryObject", "City "+ item.city);
+            Log.i("QueryObject", "State "+ item.state);
+            Log.i("QueryObject", "city_en "+ item.city_en);
+            Log.i("QueryObject", "state En "+ item.state_en);
+            Log.i("QueryObject", "distance "+ item.distance);
+        };
+    }
+
+    public ResultObject[] getResults() {
+        return results;
+    }
+}
+
+class UsableLocation {
+    String code;
+    String city;
+    double distance;
+
+    public UsableLocation(String code, String city, double distance) {
+        this.code = code;
+        this.city = city;
+        this.distance = distance;
+    }
+
+    public String getCode() {
+        return this.code;
+    }
+
+    public String getCity() {
+        return this.city;
+    }
+
+    public double getDistance() {
+        return this.distance;
+    }
 }
 
 
