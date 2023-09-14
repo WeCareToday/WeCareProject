@@ -24,7 +24,7 @@
             android:exported="false" />
         <activity
             android:name=".Activities.RequestActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".Activities.DonateFoodActivity"
             android:exported="false" />
