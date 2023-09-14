@@ -73,4 +73,9 @@ dependencies {
     // Compose Material 3
 //    implementation "androidx.compose.material3:material3:1.1.1"
 //    implementation "androidx.compose.material3:material3-window-size-class:1.1.1"
+
+    //Volley implementation
+    implementation 'com.android.volley:volley:1.2.1'
+    //Gson Dependency
+    implementation 'com.google.code.gson:gson:2.8.6'
 }
