@@ -30,7 +30,8 @@ public class RequestActivity extends AppCompatActivity {
 
     public static String TAG = "Request Activity";
     private String currentUserID = "";
-
+    private SeekBar requestActivityHouseholdSizeseekBar;
+    private TextView requestActivityHouseholdIntegerTextView;
 
 
     EditText donationDescription;
@@ -47,7 +48,8 @@ public class RequestActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request);
-
+    
+    
         donationDescription = findViewById(R.id.requestActivityDescriptionEditText);
         isForOrganization = findViewById(R.id.requestActivityOrganizationSwitch);
         isCapableOfMeeting = findViewById(R.id.requestActivityMeetingSwitch);
@@ -56,12 +58,32 @@ public class RequestActivity extends AppCompatActivity {
         dietRestrictions = findViewById(R.id.requestActivityDietaryFieldEditText);
         isAnonymousRequest = findViewById(R.id.requestActivityAnonymousSwitch);
         submitFormButton = findViewById(R.id.requestActivitySubmitButton);
-
+        requestActivityHouseholdIntegerTextView = findViewById(R.id.requestActivityHouseholdIntegerTextView);
+        requestActivityHouseholdSizeseekBar = findViewById(R.id.requestActivityHouseholdSizeseekBar);
+    
         setCurrentUserID();
 
         setupSubmitForm();
-
-
+    
+        requestActivityHouseholdIntegerTextView.setText("Household Size: " + requestActivityHouseholdSizeseekBar.getProgress());
+    
+        requestActivityHouseholdSizeseekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                // Update the TextView with the selected progress value
+                requestActivityHouseholdIntegerTextView.setText("Household Size: " + progress);
+            }
+        
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                // Handle when the user starts dragging the SeekBar (if needed)
+            }
+        
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                // Handle when the user stops dragging the SeekBar (if needed)
+            }
+        });
     }
 
 

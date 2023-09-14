@@ -89,11 +89,21 @@
         android:id="@+id/requestActivityHouseholdSizeseekBar"
         android:layout_width="0dp"
         android:layout_height="18dp"
-        android:layout_marginStart="40dp"
         android:layout_marginEnd="132dp"
+        android:max="12"
+        android:progress="4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/requestActivityHouseholdIntegerTextView"
         app:layout_constraintTop_toBottomOf="@+id/requestActivityHouseholdSizeTextView" />
+
+    <TextView
+        android:id="@+id/requestActivityHouseholdIntegerTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:text="@string/theNumberFour"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="212dp" />
 
     <TextView
         android:id="@+id/requestActivityHouseholdSizeTextView"
