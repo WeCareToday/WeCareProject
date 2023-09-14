@@ -252,7 +252,14 @@ public final class AssistanceRequest implements Model {
       contactEmail,
       zipcode);
   }
-  public interface TitleStep {
+
+//    public boolean isWillingToMeet() {
+//    }
+//
+//    public boolean isForOrganization() {
+//    }
+
+    public interface TitleStep {
     DescriptionStep title(String title);
   }
   

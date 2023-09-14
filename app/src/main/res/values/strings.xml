@@ -57,5 +57,6 @@
     <string name="shortDescriptionNeedRequestActivity">Enter short description of need</string>
     <string name="titleBoxRequestActivity">Enter Title for request</string>
     <string name="zipCodeforDonation">Enter your zipcode</string>
+    <string name="donate_request">Donations Needed</string>
 
 </resources>
