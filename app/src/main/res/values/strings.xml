@@ -47,6 +47,12 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="wecare_title">WeCare</string>
     <string name="show_form">Show Form</string>
+
+    <string name="requestActivityEmailTextView">Email:</string>
+    <string name="requestActivityPhoneTextView">Phone</string>
+    <string name="requestActivityOptionalTextView">(optional):</string>
+    <string name="requestActivityEmailFieldEditText">Enter Email Here</string>
+    <string name="requestActivityPhoneFieldEditText">214-867-5309</string>
     <string name="blank_donate_decription">Blank DonateRequest Description</string>
     <string name="emailAddress">email address</string>
     <string name="updateProfileTitle">Update Profile</string>
@@ -54,5 +60,8 @@
     <string name="NewUsernameInputText">enter new username</string>
     <string name="newZipCodeEditText">enter zipcode</string>
     <string name="donate_request">Donations Needed</string>
+
+    <string name="blank_donate_decription">Blank DonateRequest Description</string>
+
 
 </resources>
