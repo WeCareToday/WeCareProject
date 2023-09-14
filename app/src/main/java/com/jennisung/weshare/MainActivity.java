@@ -14,6 +14,7 @@ import com.amplifyframework.auth.cognito.result.AWSCognitoAuthSignOutResult;
 import com.amplifyframework.auth.options.AuthSignOutOptions;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.AssistanceRequest;
+import com.jennisung.weshare.Activities.ProfileActivity;
 import com.jennisung.weshare.Activities.SplashPageActivity;
 import com.jennisung.weshare.Adapters.DonateRequestRecyclerViewAdapter;
 
@@ -31,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
     DonateRequestRecyclerViewAdapter adapter;
 
-    Button splashpageButton;
+    Button profileButton;
     Button logoutButton;
 
 
@@ -40,10 +41,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        splashpageButton = findViewById(R.id.MainActivityGoToSplashPageButton);
+        profileButton = findViewById(R.id.MainActivityProfileButton);
         logoutButton = findViewById(R.id.MainActivityLogoutButton);
 
-        setupGoToSplashPageButton();
+        setupGoToProfilePageButton();
         setupLogoutButton();
 
         //product instances must be created before we hand the product instances
@@ -69,9 +70,9 @@ public class MainActivity extends AppCompatActivity {
         );
     }
 
-    void setupGoToSplashPageButton() {
-        splashpageButton.setOnClickListener(view -> {
-            Intent goToSplashPageActivityIntent = new Intent(MainActivity.this, SplashPageActivity.class);
+    void setupGoToProfilePageButton() {
+        profileButton.setOnClickListener(view -> {
+            Intent goToSplashPageActivityIntent = new Intent(MainActivity.this, ProfileActivity.class);
             startActivity(goToSplashPageActivityIntent);
         });
 
@@ -121,6 +122,9 @@ public class MainActivity extends AppCompatActivity {
 
 
 }
+
+
+
 
 
 //     void fetchDataFromDatabase() {
