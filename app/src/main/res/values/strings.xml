@@ -1,6 +1,12 @@
 <resources>
     <string name="app_name">WeShare</string>
 
+<!--    Style Strings-->
+    <string name="primary_color">Primary color</string>
+    <string name="button">Button</string>
+    <string name="secondary_color">Secondary color</string>
+    <string name="email_icon">email icon</string>
+<!--    Main Strings-->
     <string name="requestTitleTextView">Title/Label</string>
     <string name="descriptionBox">Enter a description of your Donation Request</string>
     <string name="requestActivityHouseholdSize">Household Size/Number of Individuals</string>
@@ -54,5 +60,10 @@
     <string name="NewUsernameInputText">enter new username</string>
     <string name="newZipCodeEditText">enter zipcode</string>
     <string name="donate_request">Donations Needed</string>
+    <string name="requestActivityEmailTextView">Email:</string>
+    <string name="requestActivityPhoneTextView">Phone</string>
+    <string name="requestActivityOptionalTextView">(optional):</string>
     <string name="theNumberFour">4</string>
+
+
 </resources>
