@@ -13,7 +13,7 @@
 .externalNativeBuild
 .cxx
 local.properties
-
+.idea
 .idea/misc.xml
 
 #amplify-do-not-edit-begin

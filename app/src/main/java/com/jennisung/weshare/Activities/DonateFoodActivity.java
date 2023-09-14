@@ -27,11 +27,14 @@ public class DonateFoodActivity extends AppCompatActivity {
     private EditText contactEmailEditText;
     private Button submitButton;
 
+    private EditText zipcodeDonation;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donate_food);
 
+        zipcodeDonation = findViewById(R.id.donateZipcode);
         availableFoodItemsEditText = findViewById(R.id.availableFoodItemsEditText);
         isWillingToDeliverCheckBox = findViewById(R.id.isWillingToDeliverCheckBox);
         isAvailableForPickupCheckBox = findViewById(R.id.isAvailableForPickupCheckBox);
@@ -52,6 +55,7 @@ public class DonateFoodActivity extends AppCompatActivity {
         boolean isWillingToDeliver = isWillingToDeliverCheckBox.isChecked();
         boolean isAvailableForPickup = isAvailableForPickupCheckBox.isChecked();
         String contactEmail = contactEmailEditText.getText().toString().trim();
+        String zipcodeCollect = zipcodeDonation.getText().toString().trim();
 
         if (availableFoodItems.isEmpty() || contactEmail.isEmpty()) {
             Toast.makeText(this, "Please fill out all required fields", Toast.LENGTH_SHORT).show();
@@ -67,6 +71,7 @@ public class DonateFoodActivity extends AppCompatActivity {
                 .isWillingToDeliver(isWillingToDeliver)
                 .isAvailableForPickup(isAvailableForPickup)
                 .contactEmail(contactEmail)
+                .zipcode(zipcodeCollect)
                 .build();
 
         saveToDynamo(foodListingToSave);

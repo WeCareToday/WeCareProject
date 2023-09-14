@@ -98,6 +98,12 @@ public class ProfileActivity extends AppCompatActivity {
                         if(key.equals("name")){
                             nameTextView.setText(value);
                         }
+                        if(key.equals("custom:zipCode")){
+                            zipcodeViewText.setText(value);
+                        }
+                        if(key.equals("custom:userName")){
+                            userNameTextViewView.setText(value);
+                        }
                         if(key.equals("custom:s3ProfileImageKey")){
                             s3ImageKey = value.toString();
                             if (s3ImageKey != null){

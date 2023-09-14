@@ -59,6 +59,7 @@ mutation CreateAssistanceRequest(
     isNeedSatisfied
     userID
     contactEmail
+    zipcode
     createdAt
     updatedAt
     __typename
@@ -82,6 +83,7 @@ mutation UpdateAssistanceRequest(
     isNeedSatisfied
     userID
     contactEmail
+    zipcode
     createdAt
     updatedAt
     __typename
@@ -105,6 +107,7 @@ mutation DeleteAssistanceRequest(
     isNeedSatisfied
     userID
     contactEmail
+    zipcode
     createdAt
     updatedAt
     __typename
@@ -122,6 +125,7 @@ mutation CreateFoodListing(
     isAvailableForPickup
     contactEmail
     UserId
+    zipcode
     createdAt
     updatedAt
     __typename
@@ -139,6 +143,7 @@ mutation UpdateFoodListing(
     isAvailableForPickup
     contactEmail
     UserId
+    zipcode
     createdAt
     updatedAt
     __typename
@@ -156,6 +161,7 @@ mutation DeleteFoodListing(
     isAvailableForPickup
     contactEmail
     UserId
+    zipcode
     createdAt
     updatedAt
     __typename
