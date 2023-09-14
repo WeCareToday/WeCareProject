@@ -44,6 +44,7 @@ query GetAssistanceRequest($id: ID!) {
     isNeedSatisfied
     userID
     contactEmail
+    zipcode
     createdAt
     updatedAt
     __typename
@@ -73,6 +74,7 @@ query ListAssistanceRequests(
       isNeedSatisfied
       userID
       contactEmail
+      zipcode
       createdAt
       updatedAt
       __typename
@@ -90,6 +92,7 @@ query GetFoodListing($id: ID!) {
     isAvailableForPickup
     contactEmail
     UserId
+    zipcode
     createdAt
     updatedAt
     __typename
@@ -109,6 +112,7 @@ query ListFoodListings(
       isAvailableForPickup
       contactEmail
       UserId
+      zipcode
       createdAt
       updatedAt
       __typename

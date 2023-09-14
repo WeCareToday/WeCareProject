@@ -53,5 +53,9 @@
     <string name="updateProfileButton">Update Profile</string>
     <string name="NewUsernameInputText">enter new username</string>
     <string name="newZipCodeEditText">enter zipcode</string>
+    <string name="emailAddressPocCollection">enter POC email address</string>
+    <string name="shortDescriptionNeedRequestActivity">Enter short description of need</string>
+    <string name="titleBoxRequestActivity">Enter Title for request</string>
+    <string name="zipCodeforDonation">Enter your zipcode</string>
 
 </resources>

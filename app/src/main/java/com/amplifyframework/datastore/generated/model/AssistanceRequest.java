@@ -38,6 +38,7 @@ public final class AssistanceRequest implements Model {
   public static final QueryField IS_NEED_SATISFIED = field("AssistanceRequest", "isNeedSatisfied");
   public static final QueryField USER_ID = field("AssistanceRequest", "userID");
   public static final QueryField CONTACT_EMAIL = field("AssistanceRequest", "contactEmail");
+  public static final QueryField ZIPCODE = field("AssistanceRequest", "zipcode");
   private final @ModelField(targetType="ID", isRequired = true) String id;
   private final @ModelField(targetType="String", isRequired = true) String title;
   private final @ModelField(targetType="String", isRequired = true) String description;
@@ -50,6 +51,7 @@ public final class AssistanceRequest implements Model {
   private final @ModelField(targetType="Boolean") Boolean isNeedSatisfied;
   private final @ModelField(targetType="ID", isRequired = true) String userID;
   private final @ModelField(targetType="String") String contactEmail;
+  private final @ModelField(targetType="String") String zipcode;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime createdAt;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime updatedAt;
   /** @deprecated This API is internal to Amplify and should not be used. */
@@ -106,6 +108,10 @@ public final class AssistanceRequest implements Model {
       return contactEmail;
   }
   
+  public String getZipcode() {
+      return zipcode;
+  }
+  
   public Temporal.DateTime getCreatedAt() {
       return createdAt;
   }
@@ -114,7 +120,7 @@ public final class AssistanceRequest implements Model {
       return updatedAt;
   }
   
-  private AssistanceRequest(String id, String title, String description, Boolean isForOrganization, Boolean isWillingToMeet, Integer familySize, String dietRestrictions, Temporal.DateTime needDate, Boolean isRequestAnonymous, Boolean isNeedSatisfied, String userID, String contactEmail) {
+  private AssistanceRequest(String id, String title, String description, Boolean isForOrganization, Boolean isWillingToMeet, Integer familySize, String dietRestrictions, Temporal.DateTime needDate, Boolean isRequestAnonymous, Boolean isNeedSatisfied, String userID, String contactEmail, String zipcode) {
     this.id = id;
     this.title = title;
     this.description = description;
@@ -127,6 +133,7 @@ public final class AssistanceRequest implements Model {
     this.isNeedSatisfied = isNeedSatisfied;
     this.userID = userID;
     this.contactEmail = contactEmail;
+    this.zipcode = zipcode;
   }
   
   @Override
@@ -149,6 +156,7 @@ public final class AssistanceRequest implements Model {
               ObjectsCompat.equals(getIsNeedSatisfied(), assistanceRequest.getIsNeedSatisfied()) &&
               ObjectsCompat.equals(getUserId(), assistanceRequest.getUserId()) &&
               ObjectsCompat.equals(getContactEmail(), assistanceRequest.getContactEmail()) &&
+              ObjectsCompat.equals(getZipcode(), assistanceRequest.getZipcode()) &&
               ObjectsCompat.equals(getCreatedAt(), assistanceRequest.getCreatedAt()) &&
               ObjectsCompat.equals(getUpdatedAt(), assistanceRequest.getUpdatedAt());
       }
@@ -169,6 +177,7 @@ public final class AssistanceRequest implements Model {
       .append(getIsNeedSatisfied())
       .append(getUserId())
       .append(getContactEmail())
+      .append(getZipcode())
       .append(getCreatedAt())
       .append(getUpdatedAt())
       .toString()
@@ -191,6 +200,7 @@ public final class AssistanceRequest implements Model {
       .append("isNeedSatisfied=" + String.valueOf(getIsNeedSatisfied()) + ", ")
       .append("userID=" + String.valueOf(getUserId()) + ", ")
       .append("contactEmail=" + String.valueOf(getContactEmail()) + ", ")
+      .append("zipcode=" + String.valueOf(getZipcode()) + ", ")
       .append("createdAt=" + String.valueOf(getCreatedAt()) + ", ")
       .append("updatedAt=" + String.valueOf(getUpdatedAt()))
       .append("}")
@@ -222,6 +232,7 @@ public final class AssistanceRequest implements Model {
       null,
       null,
       null,
+      null,
       null
     );
   }
@@ -238,7 +249,8 @@ public final class AssistanceRequest implements Model {
       isRequestAnonymous,
       isNeedSatisfied,
       userID,
-      contactEmail);
+      contactEmail,
+      zipcode);
   }
   public interface TitleStep {
     DescriptionStep title(String title);
@@ -270,6 +282,7 @@ public final class AssistanceRequest implements Model {
     BuildStep isRequestAnonymous(Boolean isRequestAnonymous);
     BuildStep isNeedSatisfied(Boolean isNeedSatisfied);
     BuildStep contactEmail(String contactEmail);
+    BuildStep zipcode(String zipcode);
   }
   
 
@@ -286,6 +299,7 @@ public final class AssistanceRequest implements Model {
     private Boolean isRequestAnonymous;
     private Boolean isNeedSatisfied;
     private String contactEmail;
+    private String zipcode;
     @Override
      public AssistanceRequest build() {
         String id = this.id != null ? this.id : UUID.randomUUID().toString();
@@ -302,7 +316,8 @@ public final class AssistanceRequest implements Model {
           isRequestAnonymous,
           isNeedSatisfied,
           userID,
-          contactEmail);
+          contactEmail,
+          zipcode);
     }
     
     @Override
@@ -375,6 +390,12 @@ public final class AssistanceRequest implements Model {
         return this;
     }
     
+    @Override
+     public BuildStep zipcode(String zipcode) {
+        this.zipcode = zipcode;
+        return this;
+    }
+    
     /**
      * @param id id
      * @return Current Builder instance, for fluent method chaining
@@ -387,7 +408,7 @@ public final class AssistanceRequest implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, String title, String description, Boolean isForOrganization, Boolean isWillingToMeet, Integer familySize, String dietRestrictions, Temporal.DateTime needDate, Boolean isRequestAnonymous, Boolean isNeedSatisfied, String userId, String contactEmail) {
+    private CopyOfBuilder(String id, String title, String description, Boolean isForOrganization, Boolean isWillingToMeet, Integer familySize, String dietRestrictions, Temporal.DateTime needDate, Boolean isRequestAnonymous, Boolean isNeedSatisfied, String userId, String contactEmail, String zipcode) {
       super.id(id);
       super.title(title)
         .description(description)
@@ -399,7 +420,8 @@ public final class AssistanceRequest implements Model {
         .dietRestrictions(dietRestrictions)
         .isRequestAnonymous(isRequestAnonymous)
         .isNeedSatisfied(isNeedSatisfied)
-        .contactEmail(contactEmail);
+        .contactEmail(contactEmail)
+        .zipcode(zipcode);
     }
     
     @Override
@@ -455,6 +477,11 @@ public final class AssistanceRequest implements Model {
     @Override
      public CopyOfBuilder contactEmail(String contactEmail) {
       return (CopyOfBuilder) super.contactEmail(contactEmail);
+    }
+    
+    @Override
+     public CopyOfBuilder zipcode(String zipcode) {
+      return (CopyOfBuilder) super.zipcode(zipcode);
     }
   }
   

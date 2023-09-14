@@ -32,12 +32,14 @@ public final class FoodListing implements Model {
   public static final QueryField IS_AVAILABLE_FOR_PICKUP = field("FoodListing", "isAvailableForPickup");
   public static final QueryField CONTACT_EMAIL = field("FoodListing", "contactEmail");
   public static final QueryField USER_ID = field("FoodListing", "UserId");
+  public static final QueryField ZIPCODE = field("FoodListing", "zipcode");
   private final @ModelField(targetType="ID", isRequired = true) String id;
   private final @ModelField(targetType="String", isRequired = true) String availableFoodItems;
   private final @ModelField(targetType="Boolean") Boolean isWillingToDeliver;
   private final @ModelField(targetType="Boolean") Boolean isAvailableForPickup;
   private final @ModelField(targetType="String") String contactEmail;
   private final @ModelField(targetType="ID", isRequired = true) String UserId;
+  private final @ModelField(targetType="String") String zipcode;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime createdAt;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime updatedAt;
   /** @deprecated This API is internal to Amplify and should not be used. */
@@ -70,6 +72,10 @@ public final class FoodListing implements Model {
       return UserId;
   }
   
+  public String getZipcode() {
+      return zipcode;
+  }
+  
   public Temporal.DateTime getCreatedAt() {
       return createdAt;
   }
@@ -78,13 +84,14 @@ public final class FoodListing implements Model {
       return updatedAt;
   }
   
-  private FoodListing(String id, String availableFoodItems, Boolean isWillingToDeliver, Boolean isAvailableForPickup, String contactEmail, String UserId) {
+  private FoodListing(String id, String availableFoodItems, Boolean isWillingToDeliver, Boolean isAvailableForPickup, String contactEmail, String UserId, String zipcode) {
     this.id = id;
     this.availableFoodItems = availableFoodItems;
     this.isWillingToDeliver = isWillingToDeliver;
     this.isAvailableForPickup = isAvailableForPickup;
     this.contactEmail = contactEmail;
     this.UserId = UserId;
+    this.zipcode = zipcode;
   }
   
   @Override
@@ -101,6 +108,7 @@ public final class FoodListing implements Model {
               ObjectsCompat.equals(getIsAvailableForPickup(), foodListing.getIsAvailableForPickup()) &&
               ObjectsCompat.equals(getContactEmail(), foodListing.getContactEmail()) &&
               ObjectsCompat.equals(getUserId(), foodListing.getUserId()) &&
+              ObjectsCompat.equals(getZipcode(), foodListing.getZipcode()) &&
               ObjectsCompat.equals(getCreatedAt(), foodListing.getCreatedAt()) &&
               ObjectsCompat.equals(getUpdatedAt(), foodListing.getUpdatedAt());
       }
@@ -115,6 +123,7 @@ public final class FoodListing implements Model {
       .append(getIsAvailableForPickup())
       .append(getContactEmail())
       .append(getUserId())
+      .append(getZipcode())
       .append(getCreatedAt())
       .append(getUpdatedAt())
       .toString()
@@ -131,6 +140,7 @@ public final class FoodListing implements Model {
       .append("isAvailableForPickup=" + String.valueOf(getIsAvailableForPickup()) + ", ")
       .append("contactEmail=" + String.valueOf(getContactEmail()) + ", ")
       .append("UserId=" + String.valueOf(getUserId()) + ", ")
+      .append("zipcode=" + String.valueOf(getZipcode()) + ", ")
       .append("createdAt=" + String.valueOf(getCreatedAt()) + ", ")
       .append("updatedAt=" + String.valueOf(getUpdatedAt()))
       .append("}")
@@ -156,6 +166,7 @@ public final class FoodListing implements Model {
       null,
       null,
       null,
+      null,
       null
     );
   }
@@ -166,7 +177,8 @@ public final class FoodListing implements Model {
       isWillingToDeliver,
       isAvailableForPickup,
       contactEmail,
-      UserId);
+      UserId,
+      zipcode);
   }
   public interface AvailableFoodItemsStep {
     UserIdStep availableFoodItems(String availableFoodItems);
@@ -184,6 +196,7 @@ public final class FoodListing implements Model {
     BuildStep isWillingToDeliver(Boolean isWillingToDeliver);
     BuildStep isAvailableForPickup(Boolean isAvailableForPickup);
     BuildStep contactEmail(String contactEmail);
+    BuildStep zipcode(String zipcode);
   }
   
 
@@ -194,6 +207,7 @@ public final class FoodListing implements Model {
     private Boolean isWillingToDeliver;
     private Boolean isAvailableForPickup;
     private String contactEmail;
+    private String zipcode;
     @Override
      public FoodListing build() {
         String id = this.id != null ? this.id : UUID.randomUUID().toString();
@@ -204,7 +218,8 @@ public final class FoodListing implements Model {
           isWillingToDeliver,
           isAvailableForPickup,
           contactEmail,
-          UserId);
+          UserId,
+          zipcode);
     }
     
     @Override
@@ -239,6 +254,12 @@ public final class FoodListing implements Model {
         return this;
     }
     
+    @Override
+     public BuildStep zipcode(String zipcode) {
+        this.zipcode = zipcode;
+        return this;
+    }
+    
     /**
      * @param id id
      * @return Current Builder instance, for fluent method chaining
@@ -251,13 +272,14 @@ public final class FoodListing implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, String availableFoodItems, Boolean isWillingToDeliver, Boolean isAvailableForPickup, String contactEmail, String userId) {
+    private CopyOfBuilder(String id, String availableFoodItems, Boolean isWillingToDeliver, Boolean isAvailableForPickup, String contactEmail, String userId, String zipcode) {
       super.id(id);
       super.availableFoodItems(availableFoodItems)
         .userId(userId)
         .isWillingToDeliver(isWillingToDeliver)
         .isAvailableForPickup(isAvailableForPickup)
-        .contactEmail(contactEmail);
+        .contactEmail(contactEmail)
+        .zipcode(zipcode);
     }
     
     @Override
@@ -283,6 +305,11 @@ public final class FoodListing implements Model {
     @Override
      public CopyOfBuilder contactEmail(String contactEmail) {
       return (CopyOfBuilder) super.contactEmail(contactEmail);
+    }
+    
+    @Override
+     public CopyOfBuilder zipcode(String zipcode) {
+      return (CopyOfBuilder) super.zipcode(zipcode);
     }
   }
   

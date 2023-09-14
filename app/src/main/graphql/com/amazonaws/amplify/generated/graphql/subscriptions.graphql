@@ -49,6 +49,7 @@ subscription OnCreateAssistanceRequest(
     isNeedSatisfied
     userID
     contactEmail
+    zipcode
     createdAt
     updatedAt
     __typename
@@ -71,6 +72,7 @@ subscription OnUpdateAssistanceRequest(
     isNeedSatisfied
     userID
     contactEmail
+    zipcode
     createdAt
     updatedAt
     __typename
@@ -93,6 +95,7 @@ subscription OnDeleteAssistanceRequest(
     isNeedSatisfied
     userID
     contactEmail
+    zipcode
     createdAt
     updatedAt
     __typename
@@ -109,6 +112,7 @@ subscription OnCreateFoodListing(
     isAvailableForPickup
     contactEmail
     UserId
+    zipcode
     createdAt
     updatedAt
     __typename
@@ -125,6 +129,7 @@ subscription OnUpdateFoodListing(
     isAvailableForPickup
     contactEmail
     UserId
+    zipcode
     createdAt
     updatedAt
     __typename
@@ -141,6 +146,7 @@ subscription OnDeleteFoodListing(
     isAvailableForPickup
     contactEmail
     UserId
+    zipcode
     createdAt
     updatedAt
     __typename

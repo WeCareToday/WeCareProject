@@ -16,6 +16,7 @@ import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.model.temporal.Temporal;
 import com.amplifyframework.datastore.generated.model.AssistanceRequest;
+import com.google.android.material.textfield.TextInputEditText;
 import com.jennisung.weshare.R;
 
 import java.text.ParseException;
@@ -33,14 +34,17 @@ public class RequestActivity extends AppCompatActivity {
 
 
 
-    EditText donationDescription;
-    Switch isForOrganization;
-    Switch isCapableOfMeeting;
-    SeekBar houseHoldSize;
-    EditText needDate;
-    EditText dietRestrictions;
-    Switch isAnonymousRequest;
-    Button submitFormButton;
+    private EditText donationDescription;
+    private Switch isForOrganization;
+    private Switch isCapableOfMeeting;
+    private SeekBar houseHoldSize;
+    private EditText needDate;
+    private EditText dietRestrictions;
+    private Switch isAnonymousRequest;
+    private Button submitFormButton;
+    private EditText zipCodeInput;
+    private EditText pocEmailAddress;
+    private EditText gatherShortDescription;
 
 
     @Override
@@ -48,6 +52,9 @@ public class RequestActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request);
 
+        gatherShortDescription = findViewById(R.id.enterShortDescription);
+        pocEmailAddress = findViewById(R.id.emailPocRequestActivity);
+        zipCodeInput = findViewById(R.id.zipcodeRequestActivity);
         donationDescription = findViewById(R.id.requestActivityDescriptionEditText);
         isForOrganization = findViewById(R.id.requestActivityOrganizationSwitch);
         isCapableOfMeeting = findViewById(R.id.requestActivityMeetingSwitch);
@@ -69,30 +76,34 @@ public class RequestActivity extends AppCompatActivity {
     void setupSubmitForm(){
         submitFormButton.setOnClickListener(v ->{
             setCurrentUserID();
-            String description = donationDescription.getText().toString();
+            String description = donationDescription.getText().toString().trim();
             boolean forOrganization = isForOrganization.isChecked();
             boolean capableOfMeeting = isCapableOfMeeting.isChecked();
             int householdSize = houseHoldSize.getProgress();
-            String date = needDate.getText().toString();
-            String dietaryRestrictions = dietRestrictions.getText().toString();
+            String date = needDate.getText().toString().trim();
+            String dietaryRestrictions = dietRestrictions.getText().toString().trim();
             boolean anonymousRequest = isAnonymousRequest.isChecked();
             String isoDate = convertToISODate(date);
             Log.i(TAG, "ISO Date equals: "+ isoDate);
             Temporal.DateTime dateTime = convertToTemporalDateTime(isoDate);
             Log.i(TAG, "DateTime to be filled in is"+ dateTime);
+            String zipCodeInputBuilder = zipCodeInput.getText().toString().trim();
+            String gatherPocEmailAddress = pocEmailAddress.getText().toString().trim();
+            String shortDescriptionNeed = gatherShortDescription.getText().toString().trim();
 
 
             AssistanceRequest requestToSave = AssistanceRequest.builder()
                     .title(description)
-                    .description("need description component")
+                    .description(shortDescriptionNeed)
                     .needDate(dateTime)
                     .userId(currentUserID)
-                    .contactEmail("need email component")
+                    .contactEmail(gatherPocEmailAddress)
                     .isRequestAnonymous(anonymousRequest)
                     .isWillingToMeet(capableOfMeeting)
                     .familySize(householdSize)
                     .dietRestrictions(dietaryRestrictions)
                     .isForOrganization(forOrganization)
+                    .zipcode(zipCodeInputBuilder)
                     .build();
 
             saveToDynamo(requestToSave);
