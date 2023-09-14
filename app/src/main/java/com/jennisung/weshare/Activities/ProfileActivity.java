@@ -37,6 +37,7 @@ public class ProfileActivity extends AppCompatActivity {
     public static String TAG = "PROFILE-ACTIVITY";
     SharedPreferences preferences;
 
+
     private String s3ImageKey = "";
     ActivityResultLauncher<Intent> activityResultLauncher;
 
@@ -48,7 +49,6 @@ public class ProfileActivity extends AppCompatActivity {
     TextView zipcodeViewText;
     Button donateButton;
     Button requestButton;
-
     ImageButton updateProfileButton;
 
 
@@ -67,10 +67,9 @@ public class ProfileActivity extends AppCompatActivity {
         userNameTextViewView = findViewById(R.id.usernameViewTextText);
         addressViewText = findViewById(R.id.addressViewText);
         zipcodeViewText = findViewById(R.id.zipcodeEditText);
-
         donateButton = findViewById(R.id.FragmentDonateButton);
         requestButton = findViewById(R.id.FragmentRequestButton);
-
+        updateProfileButton = findViewById(R.id.updateProfileImageButton);
 
         fetchLoggedInUser();
         setupDonateButton();
