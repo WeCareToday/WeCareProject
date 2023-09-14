@@ -58,5 +58,11 @@
     <string name="titleBoxRequestActivity">Enter Title for request</string>
     <string name="zipCodeforDonation">Enter your zipcode</string>
     <string name="donate_request">Donations Needed</string>
+    <string name="profile">Profile</string>
+    <string name="main_button">Main</string>
+    <string name="information">Information</string>
+    <string name="goback_button">Go Back</string>
+    <string name="information_activity">Request Info</string>
+    <string name="information_heading">Request\'s Info</string>
 
 </resources>

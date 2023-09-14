@@ -6,43 +6,29 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/MainActivityGoToSplashPageButton"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="37dp"
-        android:text="@string/splash_page"
-        android:textSize="20sp"
-        android:textColor="#FFFFFF"
-        android:background="@drawable/nice_blue_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MainActivityHeading"
-        tools:ignore="VisualLintButtonSize" />
+
+    <!--   TODO: Step 1-1: Add a recycler view editor-->
 
     <Button
         android:id="@+id/MainActivityLogoutButton"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginTop="37dp"
-        android:layout_marginEnd="60dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="24dp"
         android:text="@string/logout"
-        android:textSize="20sp"
         android:textColor="#FFFFFF"
-        android:background="@drawable/nice_blue_button"
+        android:textSize="20sp"
+        app:cornerRadius="9dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MainActivityHeading"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="VisualLintButtonSize" />
-
-
-    <!--   TODO: Step 1-1: Add a recycler view editor-->
 
     <ImageView
         android:id="@+id/MainActivitylogoImageView"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="104dp"
         android:contentDescription="TODO"
         android:src="@drawable/donation"
         app:layout_constraintHorizontal_chainStyle="packed"
@@ -54,7 +40,7 @@
         android:id="@+id/MainActivityHeading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="104dp"
         android:layout_marginEnd="116dp"
         android:fontFamily="sans-serif-black"
         android:text="@string/wecare_title"
@@ -73,5 +59,17 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MainActivityGoToSplashPageButton" />
+        app:layout_constraintTop_toBottomOf="@+id/MainActivityHeading" />
+
+    <Button
+        android:id="@+id/MainActivityProfileButton"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/profile"
+        android:textSize="20sp"
+        app:cornerRadius="9dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

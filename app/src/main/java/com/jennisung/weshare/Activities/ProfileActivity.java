@@ -26,6 +26,7 @@ import android.widget.TextView;
 import com.amplifyframework.auth.AuthUserAttribute;
 import com.amplifyframework.auth.AuthUserAttributeKey;
 import com.amplifyframework.core.Amplify;
+import com.jennisung.weshare.MainActivity;
 import com.jennisung.weshare.R;
 
 import java.io.File;
@@ -73,7 +74,8 @@ public class ProfileActivity extends AppCompatActivity {
         updateProfileButton = findViewById(R.id.updateProfileImageButton);
 
         fetchLoggedInUser();
-        setupDonateButton();
+//        setupDonateButton();
+        setupMainPageButton();
         setupRequestDonationButton();
         setupProfileImageView();
         setupUpdateImageButton();
@@ -134,9 +136,9 @@ public class ProfileActivity extends AppCompatActivity {
         );
     }
 
-    void setupDonateButton(){
+    void setupMainPageButton(){
         donateButton.setOnClickListener(v -> {
-            Intent goToDonatePageIntent = new Intent(ProfileActivity.this, DonateFoodActivity.class);
+            Intent goToDonatePageIntent = new Intent(ProfileActivity.this, MainActivity.class);
             startActivity(goToDonatePageIntent);
         });
     }

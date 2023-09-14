@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.amplifyframework.datastore.generated.model.AssistanceRequest;
 import com.jennisung.weshare.Activities.DonateFoodActivity;
+import com.jennisung.weshare.Activities.InformationActivity;
 import com.jennisung.weshare.Activities.RequestActivity;
 import com.jennisung.weshare.MainActivity;
 import com.jennisung.weshare.R;
@@ -62,6 +63,8 @@ public class DonateRequestRecyclerViewAdapter extends RecyclerView.Adapter<Donat
         TextView requestDonateFragmentTextView = holder.itemView.findViewById(R.id.requestFragmentTextView);
         Button donateButton = holder.itemView.findViewById(R.id.FragmentDonateButton);
         Button requestButton = holder.itemView.findViewById(R.id.FragmentRequestButton);
+//        Button informationButton = holder.itemView.findViewById(R.id.InformationActivityMainButton);
+
 
         String dateString = formatDateString(assistanceRequest.get(position));
 
@@ -69,7 +72,7 @@ public class DonateRequestRecyclerViewAdapter extends RecyclerView.Adapter<Donat
         requestFragmentText.append(position + 1).append(". ").append(assistanceRequest.get(position).getTitle()).append("\n");
         requestFragmentText.append("Organization: ").append(assistanceRequest.get(position).getIsForOrganization() ? "Yes" : "No").append("\n");
         requestFragmentText.append("Willing to Meeting: ").append(assistanceRequest.get(position).getIsWillingToMeet() ? "Yes" : "No").append("\n");
-        requestFragmentText.append("Need by: ").append(dateString);
+        requestFragmentText.append("Date: ").append(dateString);
 
         requestDonateFragmentTextView.setText(requestFragmentText.toString());
 
@@ -79,8 +82,14 @@ public class DonateRequestRecyclerViewAdapter extends RecyclerView.Adapter<Donat
             callingActivity.startActivity(donateIntent);
         });
 
+//        informationButton.setOnClickListener(v -> {
+//            Intent informationIntent = new Intent(callingActivity, InformationActivity.class);
+////            informationIntent.putExtra(MainActivity.REQUEST_NAME_EXTRA_TAG, assistanceRequest.get(position).getTitle());
+//            callingActivity.startActivity(informationIntent);
+//        });
+
         requestButton.setOnClickListener(v -> {
-            Intent requestIntent = new Intent(callingActivity, RequestActivity.class);
+            Intent requestIntent = new Intent(callingActivity, InformationActivity.class);
             requestIntent.putExtra(MainActivity.REQUEST_NAME_EXTRA_TAG, assistanceRequest.get(position).getTitle());
             callingActivity.startActivity(requestIntent);
         });
