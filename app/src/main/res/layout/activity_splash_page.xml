@@ -6,33 +6,53 @@
     android:layout_height="match_parent"
     tools:context=".Activities.SplashPageActivity">
 
-    <ImageView
-        android:id="@+id/SplashActivityImage"
-        android:layout_width="302dp"
-        android:layout_height="205dp"
-        android:layout_marginTop="100dp"
-        android:contentDescription="TODO"
+    <TextView
+        android:id="@+id/mainActivityHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="104dp"
+        android:layout_marginEnd="116dp"
+        android:layout_marginBottom="65dp"
+        android:fontFamily="sans-serif-black"
+        android:text="@string/wecare_title"
+        android:textSize="37sp"
+        app:layout_constraintBottom_toTopOf="@+id/SplashActivityLoginSubmitButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.577"
+        app:layout_constraintStart_toEndOf="@+id/mainActivitylogoImageView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/mainActivitylogoImageView"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="104dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginBottom="67dp"
+        android:contentDescription="TODO"
+        android:src="@drawable/donation"
+        app:layout_constraintBottom_toTopOf="@+id/SplashActivityLoginSubmitButton"
+        app:layout_constraintEnd_toStartOf="@+id/mainActivityHeading"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_launcher_background"
-        tools:ignore="ContentDescription,HardcodedText,ImageContrastCheck" />
+        tools:ignore="ContentDescription,HardcodedText" />
 
     <Button
         android:id="@+id/SplashActivityLoginSubmitButton"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="65dp"
         android:layout_marginEnd="40dp"
         android:text="@string/Login_button"
         android:textSize="20sp"
         app:cornerRadius="7dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SplashActivityImage"
+        app:layout_constraintTop_toBottomOf="@+id/mainActivityHeading"
         tools:ignore="VisualLintButtonSize" />
 
     <Button
@@ -40,15 +60,18 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="72dp"
         android:layout_marginEnd="40dp"
+        android:layout_marginBottom="342dp"
         android:text="@string/signup_button_splash"
         android:textSize="20sp"
         app:cornerRadius="7dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/SplashActivityLoginSubmitButton"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="VisualLintButtonSize" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
