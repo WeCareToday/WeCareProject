@@ -2,4 +2,15 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="button_background_color">#607D8B</color>
+    <color name="button_text_color">#FFFFFF</color>
+    <color name="my_primary_color">#607D8B</color> <!-- Change to your desired color -->
+    <color name="my_on_primary_color">#FFFFFF</color>
+    <color name="light_gray">#F0F0F0</color>
+    <color name="dark_text">#000000</color>
 </resources>
+
+
+
+
+
