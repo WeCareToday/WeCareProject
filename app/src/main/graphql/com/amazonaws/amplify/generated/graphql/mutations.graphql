@@ -60,23 +60,6 @@ mutation CreateAssistanceRequest(
     userID
     contactEmail
     zipcode
-    donations {
-      items {
-        id
-        availableFoodItems
-        isWillingToDeliver
-        isAvailableForPickup
-        contactEmail
-        UserId
-        zipcode
-        assistanceRequestId
-        createdAt
-        updatedAt
-        __typename
-      }
-      nextToken
-      __typename
-    }
     createdAt
     updatedAt
     __typename
@@ -101,23 +84,6 @@ mutation UpdateAssistanceRequest(
     userID
     contactEmail
     zipcode
-    donations {
-      items {
-        id
-        availableFoodItems
-        isWillingToDeliver
-        isAvailableForPickup
-        contactEmail
-        UserId
-        zipcode
-        assistanceRequestId
-        createdAt
-        updatedAt
-        __typename
-      }
-      nextToken
-      __typename
-    }
     createdAt
     updatedAt
     __typename
@@ -142,23 +108,6 @@ mutation DeleteAssistanceRequest(
     userID
     contactEmail
     zipcode
-    donations {
-      items {
-        id
-        availableFoodItems
-        isWillingToDeliver
-        isAvailableForPickup
-        contactEmail
-        UserId
-        zipcode
-        assistanceRequestId
-        createdAt
-        updatedAt
-        __typename
-      }
-      nextToken
-      __typename
-    }
     createdAt
     updatedAt
     __typename
@@ -176,30 +125,8 @@ mutation CreateFoodListing(
     isAvailableForPickup
     contactEmail
     UserId
+    forUserId
     zipcode
-    assistanceRequestId
-    assistanceRequest {
-      id
-      title
-      description
-      isForOrganization
-      isWillingToMeet
-      familySize
-      dietRestrictions
-      needDate
-      isRequestAnonymous
-      isNeedSatisfied
-      userID
-      contactEmail
-      zipcode
-      donations {
-        nextToken
-        __typename
-      }
-      createdAt
-      updatedAt
-      __typename
-    }
     createdAt
     updatedAt
     __typename
@@ -217,30 +144,8 @@ mutation UpdateFoodListing(
     isAvailableForPickup
     contactEmail
     UserId
+    forUserId
     zipcode
-    assistanceRequestId
-    assistanceRequest {
-      id
-      title
-      description
-      isForOrganization
-      isWillingToMeet
-      familySize
-      dietRestrictions
-      needDate
-      isRequestAnonymous
-      isNeedSatisfied
-      userID
-      contactEmail
-      zipcode
-      donations {
-        nextToken
-        __typename
-      }
-      createdAt
-      updatedAt
-      __typename
-    }
     createdAt
     updatedAt
     __typename
@@ -258,30 +163,8 @@ mutation DeleteFoodListing(
     isAvailableForPickup
     contactEmail
     UserId
+    forUserId
     zipcode
-    assistanceRequestId
-    assistanceRequest {
-      id
-      title
-      description
-      isForOrganization
-      isWillingToMeet
-      familySize
-      dietRestrictions
-      needDate
-      isRequestAnonymous
-      isNeedSatisfied
-      userID
-      contactEmail
-      zipcode
-      donations {
-        nextToken
-        __typename
-      }
-      createdAt
-      updatedAt
-      __typename
-    }
     createdAt
     updatedAt
     __typename

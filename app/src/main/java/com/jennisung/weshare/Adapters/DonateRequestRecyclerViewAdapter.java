@@ -78,7 +78,7 @@ public class DonateRequestRecyclerViewAdapter extends RecyclerView.Adapter<Donat
 
         donateButton.setOnClickListener(v -> {
             Intent donateIntent = new Intent(callingActivity, DonateFoodActivity.class);
-            donateIntent.putExtra(MainActivity.REQUEST_NAME_EXTRA_TAG, assistanceRequest.get(position).getTitle());
+            donateIntent.putExtra(MainActivity.REQUEST_NAME_EXTRA_TAG, assistanceRequest.get(position).getId());
             callingActivity.startActivity(donateIntent);
         });
 

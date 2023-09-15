@@ -12,8 +12,11 @@ import android.widget.CheckBox;
 import android.widget.Toast;
 
 import com.amplifyframework.api.graphql.model.ModelMutation;
+import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
+import com.amplifyframework.datastore.generated.model.AssistanceRequest;
 import com.amplifyframework.datastore.generated.model.FoodListing;
+import com.jennisung.weshare.MainActivity;
 import com.jennisung.weshare.R;
 
 public class DonateFoodActivity extends AppCompatActivity {
@@ -26,6 +29,9 @@ public class DonateFoodActivity extends AppCompatActivity {
     private CheckBox isAvailableForPickupCheckBox;
     private EditText contactEmailEditText;
     private Button submitButton;
+
+    private String assistanceRequestId;
+    private AssistanceRequest selectedAssistanceRequest;
 
     private EditText zipcodeDonation;
 
@@ -41,6 +47,15 @@ public class DonateFoodActivity extends AppCompatActivity {
         contactEmailEditText = findViewById(R.id.contactEmailEditText);
         submitButton = findViewById(R.id.submitButton);
 
+
+
+        Intent intent = getIntent();
+        if (intent != null){
+            assistanceRequestId = intent.getStringExtra(MainActivity.REQUEST_NAME_EXTRA_TAG).toString().trim();
+            Log.i("MyUserId", "AssistanceRequestID = "+ assistanceRequestId);
+        }
+
+
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,6 +66,7 @@ public class DonateFoodActivity extends AppCompatActivity {
 
     private void submitFoodListing() {
         setCurrentUserID();
+
         String availableFoodItems = availableFoodItemsEditText.getText().toString().trim();
         boolean isWillingToDeliver = isWillingToDeliverCheckBox.isChecked();
         boolean isAvailableForPickup = isAvailableForPickupCheckBox.isChecked();
@@ -62,16 +78,20 @@ public class DonateFoodActivity extends AppCompatActivity {
             return;
         }
 
+
+
         // Here, create a FoodListing object and use AWS Amplify or another method to store this data in your backend
         // FoodListing newListing = new FoodListing(...);
         // ...
         FoodListing foodListingToSave = FoodListing.builder()
                 .availableFoodItems(availableFoodItems)
                 .userId(currentUserID)
+                .forUserId(assistanceRequestId)
                 .isWillingToDeliver(isWillingToDeliver)
                 .isAvailableForPickup(isAvailableForPickup)
                 .contactEmail(contactEmail)
                 .zipcode(zipcodeCollect)
+
                 .build();
 
         saveToDynamo(foodListingToSave);
@@ -100,4 +120,5 @@ public class DonateFoodActivity extends AppCompatActivity {
                 }
         );
     }
+
 }
