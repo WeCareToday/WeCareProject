@@ -10,20 +10,23 @@
         android:id="@+id/updateInfoUpdateProfileActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="65dp"
+        android:layout_marginTop="40dp"
         android:text="@string/updateProfileTitle"
+        android:textColor="@color/black"
+        android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
         android:layout_width="320dp"
         android:layout_height="64dp"
-        android:layout_marginTop="39dp"
+        android:layout_marginTop="176dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/updateInfoUpdateProfileActivity">
 
@@ -38,9 +41,9 @@
         android:id="@+id/zipcodeEditText"
         android:layout_width="320dp"
         android:layout_height="64dp"
-        android:layout_marginTop="29dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
 
@@ -55,12 +58,22 @@
         android:id="@+id/updateProfileButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="66dp"
-        android:layout_marginBottom="337dp"
+        android:layout_marginBottom="180dp"
+        android:drawableLeft="@drawable/profileicon"
         android:text="@string/updateProfileButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="150dp"
+        android:layout_height="108dp"
+        android:layout_marginTop="14dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/zipcodeEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/updateInfoUpdateProfileActivity"
+        app:srcCompat="@drawable/username" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

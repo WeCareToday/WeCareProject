@@ -1,11 +1,18 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.WeShare" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/my_primary_color</item>
+        <item name="colorOnPrimary">@color/my_on_primary_color</item>
     </style>
 
-    <style name="Theme.WeShare" parent="Base.Theme.WeShare" />
-
+    <style name="Theme.WeShare" parent="Base.Theme.WeShare">
+        <!-- Apply the button style globally -->
+        <item name="materialButtonStyle">@style/ButtonStyle</item>
+    </style>
+    <style name="ButtonStyle" parent="Widget.Material3.Button">
+        <item name="android:backgroundTint">@color/button_background_color</item>
+        <item name="android:textColor">@color/button_text_color</item>
+    </style>
 
 </resources>
