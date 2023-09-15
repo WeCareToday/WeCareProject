@@ -1,6 +1,5 @@
 package com.amplifyframework.datastore.generated.model;
 
-import com.amplifyframework.core.model.annotations.BelongsTo;
 import com.amplifyframework.core.model.temporal.Temporal;
 import com.amplifyframework.core.model.ModelIdentifier;
 
@@ -26,7 +25,6 @@ import static com.amplifyframework.core.model.query.predicate.QueryField.field;
 @ModelConfig(pluralName = "FoodListings", type = Model.Type.USER, version = 1, authRules = {
   @AuthRule(allow = AuthStrategy.PUBLIC, operations = { ModelOperation.CREATE, ModelOperation.UPDATE, ModelOperation.DELETE, ModelOperation.READ })
 })
-@Index(name = "byFoodListing", fields = {"assistanceRequestId","UserId"})
 public final class FoodListing implements Model {
   public static final QueryField ID = field("FoodListing", "id");
   public static final QueryField AVAILABLE_FOOD_ITEMS = field("FoodListing", "availableFoodItems");
@@ -34,16 +32,16 @@ public final class FoodListing implements Model {
   public static final QueryField IS_AVAILABLE_FOR_PICKUP = field("FoodListing", "isAvailableForPickup");
   public static final QueryField CONTACT_EMAIL = field("FoodListing", "contactEmail");
   public static final QueryField USER_ID = field("FoodListing", "UserId");
+  public static final QueryField FOR_USER_ID = field("FoodListing", "forUserId");
   public static final QueryField ZIPCODE = field("FoodListing", "zipcode");
-  public static final QueryField ASSISTANCE_REQUEST = field("FoodListing", "assistanceRequestId");
   private final @ModelField(targetType="ID", isRequired = true) String id;
   private final @ModelField(targetType="String", isRequired = true) String availableFoodItems;
   private final @ModelField(targetType="Boolean") Boolean isWillingToDeliver;
   private final @ModelField(targetType="Boolean") Boolean isAvailableForPickup;
   private final @ModelField(targetType="String") String contactEmail;
   private final @ModelField(targetType="ID", isRequired = true) String UserId;
+  private final @ModelField(targetType="ID", isRequired = true) String forUserId;
   private final @ModelField(targetType="String") String zipcode;
-  private final @ModelField(targetType="AssistanceRequest") @BelongsTo(targetName = "assistanceRequestId", targetNames = {"assistanceRequestId"}, type = AssistanceRequest.class) AssistanceRequest assistanceRequest;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime createdAt;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime updatedAt;
   /** @deprecated This API is internal to Amplify and should not be used. */
@@ -76,12 +74,12 @@ public final class FoodListing implements Model {
       return UserId;
   }
   
-  public String getZipcode() {
-      return zipcode;
+  public String getForUserId() {
+      return forUserId;
   }
   
-  public AssistanceRequest getAssistanceRequest() {
-      return assistanceRequest;
+  public String getZipcode() {
+      return zipcode;
   }
   
   public Temporal.DateTime getCreatedAt() {
@@ -92,15 +90,15 @@ public final class FoodListing implements Model {
       return updatedAt;
   }
   
-  private FoodListing(String id, String availableFoodItems, Boolean isWillingToDeliver, Boolean isAvailableForPickup, String contactEmail, String UserId, String zipcode, AssistanceRequest assistanceRequest) {
+  private FoodListing(String id, String availableFoodItems, Boolean isWillingToDeliver, Boolean isAvailableForPickup, String contactEmail, String UserId, String forUserId, String zipcode) {
     this.id = id;
     this.availableFoodItems = availableFoodItems;
     this.isWillingToDeliver = isWillingToDeliver;
     this.isAvailableForPickup = isAvailableForPickup;
     this.contactEmail = contactEmail;
     this.UserId = UserId;
+    this.forUserId = forUserId;
     this.zipcode = zipcode;
-    this.assistanceRequest = assistanceRequest;
   }
   
   @Override
@@ -117,8 +115,8 @@ public final class FoodListing implements Model {
               ObjectsCompat.equals(getIsAvailableForPickup(), foodListing.getIsAvailableForPickup()) &&
               ObjectsCompat.equals(getContactEmail(), foodListing.getContactEmail()) &&
               ObjectsCompat.equals(getUserId(), foodListing.getUserId()) &&
+              ObjectsCompat.equals(getForUserId(), foodListing.getForUserId()) &&
               ObjectsCompat.equals(getZipcode(), foodListing.getZipcode()) &&
-              ObjectsCompat.equals(getAssistanceRequest(), foodListing.getAssistanceRequest()) &&
               ObjectsCompat.equals(getCreatedAt(), foodListing.getCreatedAt()) &&
               ObjectsCompat.equals(getUpdatedAt(), foodListing.getUpdatedAt());
       }
@@ -133,8 +131,8 @@ public final class FoodListing implements Model {
       .append(getIsAvailableForPickup())
       .append(getContactEmail())
       .append(getUserId())
+      .append(getForUserId())
       .append(getZipcode())
-      .append(getAssistanceRequest())
       .append(getCreatedAt())
       .append(getUpdatedAt())
       .toString()
@@ -151,8 +149,8 @@ public final class FoodListing implements Model {
       .append("isAvailableForPickup=" + String.valueOf(getIsAvailableForPickup()) + ", ")
       .append("contactEmail=" + String.valueOf(getContactEmail()) + ", ")
       .append("UserId=" + String.valueOf(getUserId()) + ", ")
+      .append("forUserId=" + String.valueOf(getForUserId()) + ", ")
       .append("zipcode=" + String.valueOf(getZipcode()) + ", ")
-      .append("assistanceRequest=" + String.valueOf(getAssistanceRequest()) + ", ")
       .append("createdAt=" + String.valueOf(getCreatedAt()) + ", ")
       .append("updatedAt=" + String.valueOf(getUpdatedAt()))
       .append("}")
@@ -191,8 +189,8 @@ public final class FoodListing implements Model {
       isAvailableForPickup,
       contactEmail,
       UserId,
-      zipcode,
-      assistanceRequest);
+      forUserId,
+      zipcode);
   }
   public interface AvailableFoodItemsStep {
     UserIdStep availableFoodItems(String availableFoodItems);
@@ -200,7 +198,12 @@ public final class FoodListing implements Model {
   
 
   public interface UserIdStep {
-    BuildStep userId(String userId);
+    ForUserIdStep userId(String userId);
+  }
+  
+
+  public interface ForUserIdStep {
+    BuildStep forUserId(String forUserId);
   }
   
 
@@ -211,19 +214,18 @@ public final class FoodListing implements Model {
     BuildStep isAvailableForPickup(Boolean isAvailableForPickup);
     BuildStep contactEmail(String contactEmail);
     BuildStep zipcode(String zipcode);
-    BuildStep assistanceRequest(AssistanceRequest assistanceRequest);
   }
   
 
-  public static class Builder implements AvailableFoodItemsStep, UserIdStep, BuildStep {
+  public static class Builder implements AvailableFoodItemsStep, UserIdStep, ForUserIdStep, BuildStep {
     private String id;
     private String availableFoodItems;
     private String UserId;
+    private String forUserId;
     private Boolean isWillingToDeliver;
     private Boolean isAvailableForPickup;
     private String contactEmail;
     private String zipcode;
-    private AssistanceRequest assistanceRequest;
     @Override
      public FoodListing build() {
         String id = this.id != null ? this.id : UUID.randomUUID().toString();
@@ -235,8 +237,8 @@ public final class FoodListing implements Model {
           isAvailableForPickup,
           contactEmail,
           UserId,
-          zipcode,
-          assistanceRequest);
+          forUserId,
+          zipcode);
     }
     
     @Override
@@ -247,9 +249,16 @@ public final class FoodListing implements Model {
     }
     
     @Override
-     public BuildStep userId(String userId) {
+     public ForUserIdStep userId(String userId) {
         Objects.requireNonNull(userId);
         this.UserId = userId;
+        return this;
+    }
+    
+    @Override
+     public BuildStep forUserId(String forUserId) {
+        Objects.requireNonNull(forUserId);
+        this.forUserId = forUserId;
         return this;
     }
     
@@ -277,12 +286,6 @@ public final class FoodListing implements Model {
         return this;
     }
     
-    @Override
-     public BuildStep assistanceRequest(AssistanceRequest assistanceRequest) {
-        this.assistanceRequest = assistanceRequest;
-        return this;
-    }
-    
     /**
      * @param id id
      * @return Current Builder instance, for fluent method chaining
@@ -295,15 +298,15 @@ public final class FoodListing implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, String availableFoodItems, Boolean isWillingToDeliver, Boolean isAvailableForPickup, String contactEmail, String userId, String zipcode, AssistanceRequest assistanceRequest) {
+    private CopyOfBuilder(String id, String availableFoodItems, Boolean isWillingToDeliver, Boolean isAvailableForPickup, String contactEmail, String userId, String forUserId, String zipcode) {
       super.id(id);
       super.availableFoodItems(availableFoodItems)
         .userId(userId)
+        .forUserId(forUserId)
         .isWillingToDeliver(isWillingToDeliver)
         .isAvailableForPickup(isAvailableForPickup)
         .contactEmail(contactEmail)
-        .zipcode(zipcode)
-        .assistanceRequest(assistanceRequest);
+        .zipcode(zipcode);
     }
     
     @Override
@@ -314,6 +317,11 @@ public final class FoodListing implements Model {
     @Override
      public CopyOfBuilder userId(String userId) {
       return (CopyOfBuilder) super.userId(userId);
+    }
+    
+    @Override
+     public CopyOfBuilder forUserId(String forUserId) {
+      return (CopyOfBuilder) super.forUserId(forUserId);
     }
     
     @Override
@@ -334,11 +342,6 @@ public final class FoodListing implements Model {
     @Override
      public CopyOfBuilder zipcode(String zipcode) {
       return (CopyOfBuilder) super.zipcode(zipcode);
-    }
-    
-    @Override
-     public CopyOfBuilder assistanceRequest(AssistanceRequest assistanceRequest) {
-      return (CopyOfBuilder) super.assistanceRequest(assistanceRequest);
     }
   }
   

@@ -425,79 +425,6 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "donations",
-                        "description": null,
-                        "args": [
-                            {
-                                "name": "UserId",
-                                "description": null,
-                                "type": {
-                                    "kind": "INPUT_OBJECT",
-                                    "name": "ModelIDKeyConditionInput",
-                                    "ofType": null
-                                },
-                                "defaultValue": null,
-                                "isDeprecated": false,
-                                "deprecationReason": null
-                            },
-                            {
-                                "name": "filter",
-                                "description": null,
-                                "type": {
-                                    "kind": "INPUT_OBJECT",
-                                    "name": "ModelFoodListingFilterInput",
-                                    "ofType": null
-                                },
-                                "defaultValue": null,
-                                "isDeprecated": false,
-                                "deprecationReason": null
-                            },
-                            {
-                                "name": "sortDirection",
-                                "description": null,
-                                "type": {
-                                    "kind": "ENUM",
-                                    "name": "ModelSortDirection",
-                                    "ofType": null
-                                },
-                                "defaultValue": null,
-                                "isDeprecated": false,
-                                "deprecationReason": null
-                            },
-                            {
-                                "name": "limit",
-                                "description": null,
-                                "type": {
-                                    "kind": "SCALAR",
-                                    "name": "Int",
-                                    "ofType": null
-                                },
-                                "defaultValue": null,
-                                "isDeprecated": false,
-                                "deprecationReason": null
-                            },
-                            {
-                                "name": "nextToken",
-                                "description": null,
-                                "type": {
-                                    "kind": "SCALAR",
-                                    "name": "String",
-                                    "ofType": null
-                                },
-                                "defaultValue": null,
-                                "isDeprecated": false,
-                                "deprecationReason": null
-                            }
-                        ],
-                        "type": {
-                            "kind": "OBJECT",
-                            "name": "ModelFoodListingConnection",
-                            "ofType": null
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
                         "name": "createdAt",
                         "description": null,
                         "args": [],
@@ -648,36 +575,28 @@
                         "deprecationReason": null
                     },
                     {
+                        "name": "forUserId",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "ID",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
                         "name": "zipcode",
                         "description": null,
                         "args": [],
                         "type": {
                             "kind": "SCALAR",
                             "name": "String",
-                            "ofType": null
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "assistanceRequestId",
-                        "description": null,
-                        "args": [],
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "ID",
-                            "ofType": null
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "assistanceRequest",
-                        "description": null,
-                        "args": [],
-                        "type": {
-                            "kind": "OBJECT",
-                            "name": "AssistanceRequest",
                             "ofType": null
                         },
                         "isDeprecated": false,
@@ -2547,95 +2466,6 @@
                         "name": "listFoodListings",
                         "description": null,
                         "args": [
-                            {
-                                "name": "filter",
-                                "description": null,
-                                "type": {
-                                    "kind": "INPUT_OBJECT",
-                                    "name": "ModelFoodListingFilterInput",
-                                    "ofType": null
-                                },
-                                "defaultValue": null,
-                                "isDeprecated": false,
-                                "deprecationReason": null
-                            },
-                            {
-                                "name": "limit",
-                                "description": null,
-                                "type": {
-                                    "kind": "SCALAR",
-                                    "name": "Int",
-                                    "ofType": null
-                                },
-                                "defaultValue": null,
-                                "isDeprecated": false,
-                                "deprecationReason": null
-                            },
-                            {
-                                "name": "nextToken",
-                                "description": null,
-                                "type": {
-                                    "kind": "SCALAR",
-                                    "name": "String",
-                                    "ofType": null
-                                },
-                                "defaultValue": null,
-                                "isDeprecated": false,
-                                "deprecationReason": null
-                            }
-                        ],
-                        "type": {
-                            "kind": "OBJECT",
-                            "name": "ModelFoodListingConnection",
-                            "ofType": null
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "foodListingsByAssistanceRequestIdAndUserId",
-                        "description": null,
-                        "args": [
-                            {
-                                "name": "assistanceRequestId",
-                                "description": null,
-                                "type": {
-                                    "kind": "NON_NULL",
-                                    "name": null,
-                                    "ofType": {
-                                        "kind": "SCALAR",
-                                        "name": "ID",
-                                        "ofType": null
-                                    }
-                                },
-                                "defaultValue": null,
-                                "isDeprecated": false,
-                                "deprecationReason": null
-                            },
-                            {
-                                "name": "UserId",
-                                "description": null,
-                                "type": {
-                                    "kind": "INPUT_OBJECT",
-                                    "name": "ModelIDKeyConditionInput",
-                                    "ofType": null
-                                },
-                                "defaultValue": null,
-                                "isDeprecated": false,
-                                "deprecationReason": null
-                            },
-                            {
-                                "name": "sortDirection",
-                                "description": null,
-                                "type": {
-                                    "kind": "ENUM",
-                                    "name": "ModelSortDirection",
-                                    "ofType": null
-                                },
-                                "defaultValue": null,
-                                "isDeprecated": false,
-                                "deprecationReason": null
-                            },
                             {
                                 "name": "filter",
                                 "description": null,
@@ -4761,11 +4591,11 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "zipcode",
+                        "name": "forUserId",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
-                            "name": "ModelStringInput",
+                            "name": "ModelIDInput",
                             "ofType": null
                         },
                         "defaultValue": null,
@@ -4773,11 +4603,11 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "assistanceRequestId",
+                        "name": "zipcode",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
-                            "name": "ModelIDInput",
+                            "name": "ModelStringInput",
                             "ofType": null
                         },
                         "defaultValue": null,
@@ -4901,11 +4731,11 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "zipcode",
+                        "name": "forUserId",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
-                            "name": "ModelStringInput",
+                            "name": "ModelIDInput",
                             "ofType": null
                         },
                         "defaultValue": null,
@@ -4913,11 +4743,11 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "assistanceRequestId",
+                        "name": "zipcode",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
-                            "name": "ModelIDInput",
+                            "name": "ModelStringInput",
                             "ofType": null
                         },
                         "defaultValue": null,
@@ -5061,23 +4891,27 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "zipcode",
+                        "name": "forUserId",
                         "description": null,
                         "type": {
-                            "kind": "SCALAR",
-                            "name": "String",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "ID",
+                                "ofType": null
+                            }
                         },
                         "defaultValue": null,
                         "isDeprecated": false,
                         "deprecationReason": null
                     },
                     {
-                        "name": "assistanceRequestId",
+                        "name": "zipcode",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
-                            "name": "ID",
+                            "name": "String",
                             "ofType": null
                         },
                         "defaultValue": null,
@@ -5173,11 +5007,11 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "zipcode",
+                        "name": "forUserId",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
-                            "name": "String",
+                            "name": "ID",
                             "ofType": null
                         },
                         "defaultValue": null,
@@ -5185,11 +5019,11 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "assistanceRequestId",
+                        "name": "zipcode",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
-                            "name": "ID",
+                            "name": "String",
                             "ofType": null
                         },
                         "defaultValue": null,
@@ -5309,11 +5143,11 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "zipcode",
+                        "name": "forUserId",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
-                            "name": "ModelSubscriptionStringInput",
+                            "name": "ModelSubscriptionIDInput",
                             "ofType": null
                         },
                         "defaultValue": null,
@@ -5321,11 +5155,11 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "assistanceRequestId",
+                        "name": "zipcode",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
-                            "name": "ModelSubscriptionIDInput",
+                            "name": "ModelSubscriptionStringInput",
                             "ofType": null
                         },
                         "defaultValue": null,
@@ -5359,106 +5193,6 @@
                                 "name": "ModelSubscriptionFoodListingFilterInput",
                                 "ofType": null
                             }
-                        },
-                        "defaultValue": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    }
-                ],
-                "interfaces": null,
-                "enumValues": null,
-                "possibleTypes": null
-            },
-            {
-                "kind": "INPUT_OBJECT",
-                "name": "ModelIDKeyConditionInput",
-                "description": null,
-                "specifiedByUrl": null,
-                "fields": null,
-                "inputFields": [
-                    {
-                        "name": "eq",
-                        "description": null,
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "ID",
-                            "ofType": null
-                        },
-                        "defaultValue": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "le",
-                        "description": null,
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "ID",
-                            "ofType": null
-                        },
-                        "defaultValue": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "lt",
-                        "description": null,
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "ID",
-                            "ofType": null
-                        },
-                        "defaultValue": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "ge",
-                        "description": null,
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "ID",
-                            "ofType": null
-                        },
-                        "defaultValue": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "gt",
-                        "description": null,
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "ID",
-                            "ofType": null
-                        },
-                        "defaultValue": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "between",
-                        "description": null,
-                        "type": {
-                            "kind": "LIST",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "ID",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "beginsWith",
-                        "description": null,
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "ID",
-                            "ofType": null
                         },
                         "defaultValue": null,
                         "isDeprecated": false,

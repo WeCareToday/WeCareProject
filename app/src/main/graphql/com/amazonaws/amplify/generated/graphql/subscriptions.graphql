@@ -50,23 +50,6 @@ subscription OnCreateAssistanceRequest(
     userID
     contactEmail
     zipcode
-    donations {
-      items {
-        id
-        availableFoodItems
-        isWillingToDeliver
-        isAvailableForPickup
-        contactEmail
-        UserId
-        zipcode
-        assistanceRequestId
-        createdAt
-        updatedAt
-        __typename
-      }
-      nextToken
-      __typename
-    }
     createdAt
     updatedAt
     __typename
@@ -90,23 +73,6 @@ subscription OnUpdateAssistanceRequest(
     userID
     contactEmail
     zipcode
-    donations {
-      items {
-        id
-        availableFoodItems
-        isWillingToDeliver
-        isAvailableForPickup
-        contactEmail
-        UserId
-        zipcode
-        assistanceRequestId
-        createdAt
-        updatedAt
-        __typename
-      }
-      nextToken
-      __typename
-    }
     createdAt
     updatedAt
     __typename
@@ -130,23 +96,6 @@ subscription OnDeleteAssistanceRequest(
     userID
     contactEmail
     zipcode
-    donations {
-      items {
-        id
-        availableFoodItems
-        isWillingToDeliver
-        isAvailableForPickup
-        contactEmail
-        UserId
-        zipcode
-        assistanceRequestId
-        createdAt
-        updatedAt
-        __typename
-      }
-      nextToken
-      __typename
-    }
     createdAt
     updatedAt
     __typename
@@ -163,30 +112,8 @@ subscription OnCreateFoodListing(
     isAvailableForPickup
     contactEmail
     UserId
+    forUserId
     zipcode
-    assistanceRequestId
-    assistanceRequest {
-      id
-      title
-      description
-      isForOrganization
-      isWillingToMeet
-      familySize
-      dietRestrictions
-      needDate
-      isRequestAnonymous
-      isNeedSatisfied
-      userID
-      contactEmail
-      zipcode
-      donations {
-        nextToken
-        __typename
-      }
-      createdAt
-      updatedAt
-      __typename
-    }
     createdAt
     updatedAt
     __typename
@@ -203,30 +130,8 @@ subscription OnUpdateFoodListing(
     isAvailableForPickup
     contactEmail
     UserId
+    forUserId
     zipcode
-    assistanceRequestId
-    assistanceRequest {
-      id
-      title
-      description
-      isForOrganization
-      isWillingToMeet
-      familySize
-      dietRestrictions
-      needDate
-      isRequestAnonymous
-      isNeedSatisfied
-      userID
-      contactEmail
-      zipcode
-      donations {
-        nextToken
-        __typename
-      }
-      createdAt
-      updatedAt
-      __typename
-    }
     createdAt
     updatedAt
     __typename
@@ -243,30 +148,8 @@ subscription OnDeleteFoodListing(
     isAvailableForPickup
     contactEmail
     UserId
+    forUserId
     zipcode
-    assistanceRequestId
-    assistanceRequest {
-      id
-      title
-      description
-      isForOrganization
-      isWillingToMeet
-      familySize
-      dietRestrictions
-      needDate
-      isRequestAnonymous
-      isNeedSatisfied
-      userID
-      contactEmail
-      zipcode
-      donations {
-        nextToken
-        __typename
-      }
-      createdAt
-      updatedAt
-      __typename
-    }
     createdAt
     updatedAt
     __typename
