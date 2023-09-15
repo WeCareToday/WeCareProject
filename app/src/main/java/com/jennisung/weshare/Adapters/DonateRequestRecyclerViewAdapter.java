@@ -2,15 +2,19 @@ package com.jennisung.weshare.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.amplifyframework.api.graphql.model.ModelMutation;
+import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.AssistanceRequest;
 import com.jennisung.weshare.Activities.DonateFoodActivity;
 import com.jennisung.weshare.Activities.InformationActivity;
@@ -51,6 +55,7 @@ public class DonateRequestRecyclerViewAdapter extends RecyclerView.Adapter<Donat
     @NonNull
     @Override
     public requestDonateViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
 //        TODO: step 1-7: inflating the fragment(add the fragment to the viewholder)
         View requestDonateFragment = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_donate_request, parent, false);
 //          TODO STEP 1-9 attach fragment to the viewholder
@@ -64,6 +69,7 @@ public class DonateRequestRecyclerViewAdapter extends RecyclerView.Adapter<Donat
         Button donateButton = holder.itemView.findViewById(R.id.FragmentDonateButton);
         Button requestButton = holder.itemView.findViewById(R.id.FragmentRequestButton);
 //        Button informationButton = holder.itemView.findViewById(R.id.InformationActivityMainButton);
+
 
 
         String dateString = formatDateString(assistanceRequest.get(position));
@@ -93,36 +99,44 @@ public class DonateRequestRecyclerViewAdapter extends RecyclerView.Adapter<Donat
             requestIntent.putExtra(MainActivity.REQUEST_NAME_EXTRA_TAG, assistanceRequest.get(position).getTitle());
             callingActivity.startActivity(requestIntent);
         });
+
+
+//        holder.deleteButton.setOnClickListener(view -> {
+//            AssistanceRequest toDelete = assistanceRequest.get(position);
+//            // Delete from backend
+//            Amplify.API.mutate(
+//                    ModelMutation.delete(toDelete),
+//                    response -> {
+//                        Log.i("MyAmplifyApp", "Deleted Item: " + toDelete.getId());
+//                        // Remove from local list and notify adapter
+//                        assistanceRequest.remove(position);
+//                        notifyItemRemoved(position);
+//                    },
+//                    error -> Log.e("MyAmplifyApp", "Delete failed", error)
+//            );
+
+        holder.deleteButton.setOnClickListener(view -> {
+            AssistanceRequest toDelete = assistanceRequest.get(position);
+            // Delete from backend
+            Amplify.API.mutate(
+                    ModelMutation.delete(toDelete),
+                    response -> {
+                        Log.i("MyAmplifyApp", "Deleted Item: " + toDelete.getId());
+                        // Remove from local list and notify adapter
+                        assistanceRequest.remove(position);
+                        notifyItemRemoved(position);
+
+                        // Navigate to MainActivity
+                        Intent intent = new Intent(callingActivity, MainActivity.class);
+                        callingActivity.startActivity(intent);
+                    },
+                    error -> Log.e("MyAmplifyApp", "Delete failed", error)
+            );
+        });
     }
 
 
 
-
-
-//@Override
-//public void onBindViewHolder(@NonNull requestDonateViewHolder holder, int position) {
-//    TextView requestDonateFragmentTextView = holder.itemView.findViewById(R.id.requestFragmentTextView);
-//    Button donateButton = holder.itemView.findViewById(R.id.FragmentDonateButton);
-//    Button requestButton = holder.itemView.findViewById(R.id.FragmentRequestButton);
-//
-//    String dateString = formatDateString(assistanceRequest.get(position));
-//    String requestFragmentText = (position + 1) + ". " + assistanceRequest.get(position).getTitle() + "\n" + dateString;
-//
-//    requestDonateFragmentTextView.setText(requestFragmentText);
-//
-//    donateButton.setOnClickListener(v -> {
-//        Intent donateIntent = new Intent(callingActivity, DonateFoodActivity.class);
-//        donateIntent.putExtra(MainActivity.REQUEST_NAME_EXTRA_TAG, assistanceRequest.get(position).getTitle());
-//        callingActivity.startActivity(donateIntent);
-//    });
-//
-//    requestButton.setOnClickListener(v -> {
-//        Intent requestIntent = new Intent(callingActivity, RequestActivity.class);
-//        requestIntent.putExtra(MainActivity.REQUEST_NAME_EXTRA_TAG, assistanceRequest.get(position).getTitle());
-//        callingActivity.startActivity(requestIntent);
-//    });
-//
-//}
 
 
     @Override
@@ -133,13 +147,23 @@ public class DonateRequestRecyclerViewAdapter extends RecyclerView.Adapter<Donat
     }
 
 
-    public static class requestDonateViewHolder extends RecyclerView.ViewHolder {
+//    public static class requestDonateViewHolder extends RecyclerView.ViewHolder {
+//
+//        //TODO: step 1-8 make a viewholder class to hold our fragmenets
+//        public requestDonateViewHolder(@NonNull View itemView) {
+//            super(itemView);
+//        }
+//    }
 
-        //TODO: step 1-8 make a viewholder class to hold our fragmenets
+    public static class requestDonateViewHolder extends RecyclerView.ViewHolder {
+        ImageButton deleteButton;
+
         public requestDonateViewHolder(@NonNull View itemView) {
             super(itemView);
+            deleteButton = itemView.findViewById(R.id.FragmentDeleteButton); // Find the delete button
         }
     }
+
 
 
     private String formatDateString(AssistanceRequest assistanceRequest) {
@@ -196,3 +220,29 @@ public class DonateRequestRecyclerViewAdapter extends RecyclerView.Adapter<Donat
 //        });
 //
 //    }
+
+
+//@Override
+//public void onBindViewHolder(@NonNull requestDonateViewHolder holder, int position) {
+//    TextView requestDonateFragmentTextView = holder.itemView.findViewById(R.id.requestFragmentTextView);
+//    Button donateButton = holder.itemView.findViewById(R.id.FragmentDonateButton);
+//    Button requestButton = holder.itemView.findViewById(R.id.FragmentRequestButton);
+//
+//    String dateString = formatDateString(assistanceRequest.get(position));
+//    String requestFragmentText = (position + 1) + ". " + assistanceRequest.get(position).getTitle() + "\n" + dateString;
+//
+//    requestDonateFragmentTextView.setText(requestFragmentText);
+//
+//    donateButton.setOnClickListener(v -> {
+//        Intent donateIntent = new Intent(callingActivity, DonateFoodActivity.class);
+//        donateIntent.putExtra(MainActivity.REQUEST_NAME_EXTRA_TAG, assistanceRequest.get(position).getTitle());
+//        callingActivity.startActivity(donateIntent);
+//    });
+//
+//    requestButton.setOnClickListener(v -> {
+//        Intent requestIntent = new Intent(callingActivity, RequestActivity.class);
+//        requestIntent.putExtra(MainActivity.REQUEST_NAME_EXTRA_TAG, assistanceRequest.get(position).getTitle());
+//        callingActivity.startActivity(requestIntent);
+//    });
+//
+//}

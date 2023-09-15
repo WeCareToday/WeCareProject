@@ -77,10 +77,10 @@ public class MainActivity extends AppCompatActivity {
 
         setCurrentUserID();
         // Call fetchUserZipcode with a callback
-        fetchUserZipcode(() -> {
-            // This code will be executed when fetchUserZipcode completes
-            getData();
-        });
+//        fetchUserZipcode(() -> {
+//            // This code will be executed when fetchUserZipcode completes
+//            getData();
+//        });
 
 
     }
