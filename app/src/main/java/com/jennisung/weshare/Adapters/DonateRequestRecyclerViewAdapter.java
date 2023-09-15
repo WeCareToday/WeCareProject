@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -35,9 +36,17 @@ import java.util.List;
 
 //TODO:step 1-4: Make a custom recyclerview adapter that extends
 public class DonateRequestRecyclerViewAdapter extends RecyclerView.Adapter<DonateRequestRecyclerViewAdapter.requestDonateViewHolder>  {
+
+    private final String TAG = "Recycler";
+
+
+
     // TODO step 2-3: create product list vairable and constructor within adapter
     public List<AssistanceRequest> assistanceRequest;
     public Context context;
+
+    public String loggedInUserId;
+    public String requestorUserId;
 
 
     //TODO : step 3-2cont: create a context variable and update constructor
@@ -65,6 +74,7 @@ public class DonateRequestRecyclerViewAdapter extends RecyclerView.Adapter<Donat
 
     @Override
     public void onBindViewHolder(@NonNull requestDonateViewHolder holder, int position) {
+
         TextView requestDonateFragmentTextView = holder.itemView.findViewById(R.id.requestFragmentTextView);
         Button donateButton = holder.itemView.findViewById(R.id.FragmentDonateButton);
         Button requestButton = holder.itemView.findViewById(R.id.FragmentRequestButton);
@@ -116,24 +126,34 @@ public class DonateRequestRecyclerViewAdapter extends RecyclerView.Adapter<Donat
 //            );
 
         holder.deleteButton.setOnClickListener(view -> {
-            AssistanceRequest toDelete = assistanceRequest.get(position);
-            // Delete from backend
-            Amplify.API.mutate(
-                    ModelMutation.delete(toDelete),
-                    response -> {
-                        Log.i("MyAmplifyApp", "Deleted Item: " + toDelete.getId());
-                        // Remove from local list and notify adapter
-                        assistanceRequest.remove(position);
-                        notifyItemRemoved(position);
 
-                        // Navigate to MainActivity
-                        Intent intent = new Intent(callingActivity, MainActivity.class);
-                        callingActivity.startActivity(intent);
-                    },
-                    error -> Log.e("MyAmplifyApp", "Delete failed", error)
-            );
+            AssistanceRequest toDelete = assistanceRequest.get(position);
+
+
+                // Delete from backend
+                Amplify.API.mutate(
+                        ModelMutation.delete(toDelete),
+                        response -> {
+                            Log.i("MyAmplifyApp", "Deleted Item: " + toDelete.getId());
+                            // Remove from local list and notify adapter
+                            assistanceRequest.remove(position);
+                            notifyItemRemoved(position);
+
+                            // Navigate to MainActivity
+                            Intent intent = new Intent(callingActivity, MainActivity.class);
+                            callingActivity.startActivity(intent);
+                        },
+                        error -> Log.e("MyAmplifyApp", "Delete failed", error)
+                );
+
+
+
+
         });
     }
+
+
+
 
 
 

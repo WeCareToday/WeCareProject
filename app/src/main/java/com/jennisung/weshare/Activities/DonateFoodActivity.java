@@ -39,6 +39,7 @@ public class DonateFoodActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donate_food);
+        setCurrentUserID();
 
         zipcodeDonation = findViewById(R.id.donateZipcode);
         availableFoodItemsEditText = findViewById(R.id.availableFoodItemsEditText);
@@ -59,13 +60,14 @@ public class DonateFoodActivity extends AppCompatActivity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                setCurrentUserID();
                 submitFoodListing();
             }
         });
     }
 
     private void submitFoodListing() {
-        setCurrentUserID();
+
 
         String availableFoodItems = availableFoodItemsEditText.getText().toString().trim();
         boolean isWillingToDeliver = isWillingToDeliverCheckBox.isChecked();
