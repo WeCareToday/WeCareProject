@@ -45,6 +45,23 @@ query GetAssistanceRequest($id: ID!) {
     userID
     contactEmail
     zipcode
+    donations {
+      items {
+        id
+        availableFoodItems
+        isWillingToDeliver
+        isAvailableForPickup
+        contactEmail
+        UserId
+        zipcode
+        assistanceRequestId
+        createdAt
+        updatedAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
     createdAt
     updatedAt
     __typename
@@ -75,6 +92,10 @@ query ListAssistanceRequests(
       userID
       contactEmail
       zipcode
+      donations {
+        nextToken
+        __typename
+      }
       createdAt
       updatedAt
       __typename
@@ -93,6 +114,29 @@ query GetFoodListing($id: ID!) {
     contactEmail
     UserId
     zipcode
+    assistanceRequestId
+    assistanceRequest {
+      id
+      title
+      description
+      isForOrganization
+      isWillingToMeet
+      familySize
+      dietRestrictions
+      needDate
+      isRequestAnonymous
+      isNeedSatisfied
+      userID
+      contactEmail
+      zipcode
+      donations {
+        nextToken
+        __typename
+      }
+      createdAt
+      updatedAt
+      __typename
+    }
     createdAt
     updatedAt
     __typename
@@ -113,6 +157,77 @@ query ListFoodListings(
       contactEmail
       UserId
       zipcode
+      assistanceRequestId
+      assistanceRequest {
+        id
+        title
+        description
+        isForOrganization
+        isWillingToMeet
+        familySize
+        dietRestrictions
+        needDate
+        isRequestAnonymous
+        isNeedSatisfied
+        userID
+        contactEmail
+        zipcode
+        createdAt
+        updatedAt
+        __typename
+      }
+      createdAt
+      updatedAt
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+
+query FoodListingsByAssistanceRequestIdAndUserId(
+  $assistanceRequestId: ID!
+  $UserId: ModelIDKeyConditionInput
+  $sortDirection: ModelSortDirection
+  $filter: ModelFoodListingFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  foodListingsByAssistanceRequestIdAndUserId(
+    assistanceRequestId: $assistanceRequestId
+    UserId: $UserId
+    sortDirection: $sortDirection
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      availableFoodItems
+      isWillingToDeliver
+      isAvailableForPickup
+      contactEmail
+      UserId
+      zipcode
+      assistanceRequestId
+      assistanceRequest {
+        id
+        title
+        description
+        isForOrganization
+        isWillingToMeet
+        familySize
+        dietRestrictions
+        needDate
+        isRequestAnonymous
+        isNeedSatisfied
+        userID
+        contactEmail
+        zipcode
+        createdAt
+        updatedAt
+        __typename
+      }
       createdAt
       updatedAt
       __typename
