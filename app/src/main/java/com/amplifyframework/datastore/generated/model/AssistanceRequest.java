@@ -1,6 +1,7 @@
 package com.amplifyframework.datastore.generated.model;
 
 import com.amplifyframework.core.model.temporal.Temporal;
+import com.amplifyframework.core.model.annotations.HasMany;
 import com.amplifyframework.core.model.ModelIdentifier;
 
 import java.util.List;
@@ -52,6 +53,7 @@ public final class AssistanceRequest implements Model {
   private final @ModelField(targetType="ID", isRequired = true) String userID;
   private final @ModelField(targetType="String") String contactEmail;
   private final @ModelField(targetType="String") String zipcode;
+  private final @ModelField(targetType="FoodListing") @HasMany(associatedWith = "assistanceRequest", type = FoodListing.class) List<FoodListing> donations = null;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime createdAt;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime updatedAt;
   /** @deprecated This API is internal to Amplify and should not be used. */
@@ -110,6 +112,10 @@ public final class AssistanceRequest implements Model {
   
   public String getZipcode() {
       return zipcode;
+  }
+  
+  public List<FoodListing> getDonations() {
+      return donations;
   }
   
   public Temporal.DateTime getCreatedAt() {
@@ -252,14 +258,7 @@ public final class AssistanceRequest implements Model {
       contactEmail,
       zipcode);
   }
-
-//    public boolean isWillingToMeet() {
-//    }
-//
-//    public boolean isForOrganization() {
-//    }
-
-    public interface TitleStep {
+  public interface TitleStep {
     DescriptionStep title(String title);
   }
   
